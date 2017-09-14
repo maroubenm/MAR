@@ -72,38 +72,8 @@ Some popular examples of unsupervised learning algorithms are:
 
 \par
 
-\section{Reinforcement Learning }
 
-In some applications, the output of the system is a sequence of actions. In such a case, a single action is not important; what is important is the policy that is the sequence of correct actions to reach the goal. There is no such thing as the best action in any intermediate state; an action is good if it is part of a good policy. In such a case, the machine learning program should be able to assess the goodness of policies and learn from past good action sequences to be able to generate a policy. Such learning reinforcement methods are called reinforcement learning algorithms.
-learning A good example is game playing where a single move by itself is not that important; it is the sequence of right moves that is good. A move is good if it is part of a good game playing policy. Game playing is an important research area in both artificial intelligence and machine learning. This is because games are easy to describe and at the same time, they are quite difficult to play well. A game like chess has a small number of rules but it is very complex because of the large number of possible moves at each state and the large number of moves that a game contains. Once we have good algorithms that can learn to play games well, we can also apply them to applications with more evident economic utility.
-A robot navigating in an environment in search of a goal location is
-another application area of reinforcement learning. At any time, the robot can move in one of a number of directions. After a number of trial runs, it should learn the correct sequence of actions to reach to the goal state from an initial state, doing this as quickly as possible and without hitting any of the obstacles.
-One factor that makes reinforcement learning harder is when the system
-has unreliable and partial sensory information. For example, a robot
-equipped with a video camera has incomplete information and thus at
-any time is in a partially observable state and should decide taking into account this uncertainty; for example, it may not know its exact location in a room but only that there is a wall to its left. A task may also  require a concurrent operation of multiple agents that should interact and   cooperate to accomplish a common goal. An example is a team of robots playing soccer.
 
-\subsection{ Offline Learning}
-In offline learning, also named batch learning, the adjustments on the weight vectors
-and thresholds of the network are performed after all the training set is presented,
-since each adjustment step takes into account the number of errors observed within
-the training samples with respect to the desired values for their outputs.
-Therefore, networks using offline learning requires, at least, one training epoch
-for executing one adjustment step on their weights and thresholds. Hence, all
-training samples must be available during the whole learning process.
-
-\subsection{ Online Learning }
-Opposite to offline learning, in online learning, the adjustments on the weights and
-thresholds of the network are performed after presenting each training sample.
-Thus, after executing the adjustment step, the respective sample can be discarded.
-Online learning with this configuration is usually used when the behavior of the
-system being mapped changes rapidly, thus the adoption of offline learning is
-almost impractical because the samples used at a given moment may no more
-represent the system behavior in posterior moments.
-However, since patterns are presented one at a time, weight and threshold
-adjustment actions are well located and punctual, and they reflect a given behavioral
-circumstance of the system. Therefore, the network will begin to provide accurate
-responses after presenting a significant number of samples (Reed and Marks II, 1999).
 \section{Support Vector Machines (SVM) }\label{sec:svm}
 
 Support Vector Machines are based on the concept of decision planes that define decision boundaries. A decision plane is one that separates between a set of objects having different class memberships. A schematic example is shown in the illustration below. In this example, the objects belong either to class GREEN or RED. The separating line defines a boundary on the right side of which all objects are GREEN and to the left of which all objects are RED. Any new object (white circle) falling to the right is labeled, i.e., classified, as GREEN (or classified as RED should it fall to the left of the separating line).

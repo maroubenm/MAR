@@ -1,14 +1,19 @@
 
 \chapter{Descriptors}
 
+\section{introduction}
+
+Over the last decades, image feature detectors and descriptors have become popular tools in the computer vision community and they are being applied widely in a large number of applications. Image representation , image classification and retrieval  , object recognition and matching  3D scene reconstruction , motion tracking   texture classification , robot localization, all rely on the presence of stable and representative features in the image. Thus, detecting and extracting the image features are vital steps for these applications.
+Hence The need for a Descriptor that can detect and extract Features 
+and Since our HGR system needs a Features detector that can be stable in most cases which will  full fill our need to Recognize the Gesture performed by the user .\\
+
+\textit{Note : The Definition of SIFT  Descriptor might be long and has a lot of Definitions because Sift is considered as the most  powerful and widely used local descriptor in object recognition and image classification Hence the Literature focus on it  , and as a guarantee  to ensure the understanding of  Sift definition and key words  we will summarize all Sift's  Definition  IN THE END OF EVERY SECTION }
+
 \section{Definitions and Principles:}
 
 \subsection{Global and Local Features}
-In image processing and computer vision tasks, we need to represent the image by
-features extracted therefrom. The raw image is perfect for the human eye to extract
-all information from; however that is not the case with computer algorithms. There
-are generally two methods to represent images, namely, global features and local
-features. In the global feature representation, the image is represented by one multidimensional
+the following definition was given by M. Hassaballah et al in \ref{}. 
+In the global feature representation, the image is represented by one multidimensional
 feature vector, describing the information in the whole image.\\
 In other words, the global representation method produces a single vector with values that
 measure various aspects of the image such as color, texture or shape. Practically, a
@@ -44,21 +49,15 @@ useful in applications where a rough segmentation of the object of interest is a
 The advantages of global features are that they are much faster and compact
 while easy to compute and generally require small amounts of memory.\\ Nevertheless,
 the global representation suffers from well-known limitations, in particular they
-are not invariant to significant transformations and sensitive to clutter and occlusion.\\In some applications, such as copy detection, most of the illegal copies are very
-similar to the original; they have only suffered from compression, scaling or limited
-cropping. In contrast, the advantage of local features is their superior performance
-\cite{i}. Meanwhile, using local features for large-scale image search have much higher
-performance than global features provide \cite{k}.\\ Besides, as the local structures are
-more distinctive and stable than other structures in smooth regions, it is expected
-to be more useful for image matching and object recognition.\\ However, they usually
-require a significant amount of memory because the image may have hundreds
-of local features.\\ As a solution for this problem, researchers suggest aggregating
-local image descriptors into a very compact vector representation and optimizing the
+are not invariant to significant transformations and sensitive to clutter and occlusion.\\In some applications, such as copy detection, most of the illegal copies are very  similar to the original; they have only suffered from compression, scaling or limited
+cropping. In contrast, the advantage of local features is their superior performance \cite{i}. Meanwhile, using local features for large-scale image search have much higher performance than global features provide \cite{k}.\\ Besides, as the local structures are more distinctive and stable than other structures in smooth regions, it is expected to be more useful for image matching and object recognition.\\ However, they usually require a significant amount of memory because the image may have hundreds of local features.\\ As a solution for this problem, researchers suggest aggregating local image descriptors into a very compact vector representation and optimizing the
 dimensionality reduction of these vectors \cite{k}
 
+
 \subsection{Characteristics of Feature Detectors}
-Tuytelaars and Mikolajczyk \cite{MM} define a local feature as “it is an image pattern
-which differs from its immediate neighborhood”. Thus, they consider the purpose of
+
+Tuytelaars and Mikolajczyk \cite{MM} define a local feature as \textit{ “it is an image pattern
+which differs from its immediate neighborhood”.} Thus, they consider the purpose of
 local invariant features is to provide a representation that allows to efficiently match
 local structures between images. That is, we want to obtain a sparse set of local
 measurements that capture the essence of the underlying input images and encode
@@ -89,21 +88,8 @@ information content of the image for providing a compact image representation.
 \section{Spectra descriptors :}
 \subsection{SIFT - Scale Invariant Feature Transforms} \label{siftSection}
 
-Image matching is a fundamental aspect of many problems in computer vision, including
-object recognition, solving for 3D structure from multiple images, stereo matching, and
-motion tracking and segmentation.\\ This paper describes image features that have many
-properties that make them suitable for matching differing images of an object or scene.\\
-The features are invariant to image scaling and rotation, and partially invariant to change
-in illumination and 3D camera viewpoint. They are well localized in both the spatial and
-frequency domains, reducing the probability of disruption by occlusion, clutter, or noise.
-Large numbers of features can be extracted from typical images with efficient algorithms.
-Most importantly, the features are highly distinctive, which allows a single feature to be
-correctly matched with high probability against a large database of features, providing a
-basis for object and scene recognition.\\
-The cost of extracting these features is minimized by taking a sequential filtering approach,
-in which the more expensive operations are applied only at locations that pass an
-initial test. Following are the major stages of computation in generating the set of image
-features:
+The Scale Invariant Feature Transform (SIFT) developed by Lowe \ref{} is the most well-known method for finding interest points and feature descriptors, providing invariance to scale, rotation, illumination, affine distortion, perspective and similarity
+transforms, and noise. Lowe demonstrates that by using several SIFT descriptors together to describe an object, there is additional invariance to occlusion and clutter. We provide some detail here on SIFT since it is well designed and well known.
 
 
 \begin{enumerate}
@@ -139,7 +125,12 @@ images and stored in a database.\\ A new image is matched by individually compar
 each feature from the new image to this previous database and finding candidate matching
 features based on Euclidean distance of their feature vectors.\\
 The keypoint descriptors are highly distinctive, which allows a single feature to find its
-correct match with good probability in a large database of features.
+correct match with good probability in a large database of features. \\
+
+
+
+
+
 \subsection{Scale-Space Extrema Detection :}
 As described in [\ref{siftSection}], we will detect keypoints using a sequential filtering approach
 that uses efficient algorithms to identify candidate locations that are then examined
@@ -244,6 +235,12 @@ that has twice the initial value of $\sigma$ by taking every second pixel in eac
 The accuracy of sampling relative to $\sigma$ is no different than for the previous octave, while
 computation is greatly reduced.
 
+\textbf{Summary of the section :}
+
+In the first step of SIFT, you generate several octaves of the original image. Each octave's image size is half the previous one. Within an octave, images are progressively blurred using the Gaussian Blur operator.
+next we use all these octaves to generate Difference of Gaussian images ( Dog ) Two consecutive images in an octave are picked and one is subtracted from the other. Then the next consecutive pair is taken, and the process repeats. This is done for all octaves. The resulting images are an approximation of scale invariant laplacian of gaussian which is good for detecting keypoints .
+
+
 \subsection{Keypoint localization :}
 We wish to identify locations in image scale space that are
 invariant with respect to image translation, scaling, and rotation,
@@ -313,6 +310,11 @@ on the order of 1000 key points for a typical
 512$\times$512 pixel
 image, compared to only a quarter as many without the initial
 expansion.
+
+\textbf{Summary of this section :}\\
+
+Here, we detected the maxima and minima in the DoG images generated in the previous step. This is done by comparing neighbouring pixels in the current scale, the scale "above" and the scale "below".
+
 \subsection{Orientation assignment :}
 By assigning a consistent orientation to each keypoint based on local image properties,
 the keypoint descriptor can be represented relative to this orientation and therefore achieve
@@ -348,26 +350,10 @@ keypoints created at the same location and scale but different orientations. Onl
 stability of matching. Finally, a parabola is ﬁt to the 3 histogram values around each peak
 to interpolate the peak position for better accuracy.
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.7\textwidth]{img/sift3.PNG}
-\caption{ The top line in the graph shows the percent of keypoint locations that are repeatably
-detected as a function of pixel noise. The second line shows the repeatability after also requiring
-agreement in orientation. The bottom line shows the ﬁnal percent of descriptors correctly matched
-to a large database.}
-\label{fig:sift3}
-\end{figure}
 
-Figure \ref{fig:sift3} shows the experimental stability of orientation assignment under differing
-amounts of image noise. As before the images are rotated and scaled by random amounts.
-The top line shows the stability of keypoint location. The second line shows the stability of
-matching when the orientation assignment is required to be within 15 degrees. As shown
-by the gap between the top two lines, the orientation assignment remains accurate 95\% of
-the time even after addition of$ \pm$10\% pixel noise (equivalent to truncating pixel values to
-less than 3 bits of precision). The measured variance of orientation for the correct matches
-is about 2.5 degrees, rising to 3.9 degrees for 10\% noise. The bottom line in Figure \ref{fig:sift3}
-shows the final accuracy of correctly matching a keypoint to a large database, which will
-be discussed below.
+\textbf{summary of the section :}
+
+To assign an orientation we use a histogram and a small region around it. Using the histogram, the most prominent gradient orientation(s) are identified. If there is only one peak, it is assigned to the keypoint. If there are multiple peaks above the 80\% mark, they are all converted into a new keypoint (with their respective orientations).
 
 \subsection{Keypoint descriptor :}
 
@@ -426,7 +412,11 @@ the inﬂuence of gradient magnitudes by thresholding the values in the unit fea
 each be no larger than 0.2, and then renormalizing to unit length. This means that matching
 the magnitudes for large gradients is no longer as important, and that the distribution of
 orientations has greater emphasis. The value of 0.2 was determined experimentally using
-differing illuminations for the same objects
+differing illuminations for the same objects\\
+
+\textbf{Summary of the section }
+
+You take a 16x16 window of "in-between" pixels around the keypoint. You split that window into sixteen 4x4 windows. From each 4x4 window you generate a histogram of 8 bins. Each bin corresponding to 0-44 degrees, 45-89 degrees. Gradient orientations from the 4x4 are put into these bins. This is done for all 4x4 blocks. Finally, you normalize the 128 values .
 
 \subsection{Speeded Up Robust Features (SURF) :}
 SURF (Speeded Up Robust Features), is a feature detector, we talked about SIFT before, and SURF is sort of derivative of SIFT. SURF is based on sums of 2D Haar wavelet responses and makes an efficient use of integral images.
@@ -471,7 +461,13 @@ These approximate second order Gaussian derivatives and can be evaluated at a ve
 
 Now we can represent the determinant of the Hessian (approximated) as:
 
-
+\begin{figure}[H]
+\centering
+\includegraphics[width\textwidth]{img/det.jpeg}
+\caption{}
+\label{fig:surfdet}
+\end{figure}
+and we can use 0.9 for w by Bay’s suggestion.
 
 \subsection{ABOUT PYRAMID :}
 
@@ -494,7 +490,7 @@ SURF(right) uses larger and larger filters}
 \centering
 \includegraphics[width=0.6\textwidth]{img/surf3.jpg}
 \caption{descriptor computation }
-\label{fig:surf2}
+\label{fig:surf3}
 \end{figure}
 
 We first calculate the Haar wavelet responses in x and y direction within a circular neighborhood of radius 6s around the interest point, with s the scale at which the interest point was detected. We calculate the sum of vertical and horizontal wavelet responses in a scanning aria, then change the scanning orientation (add $\pi$/3), and re-calculate, until we find the orientation with largest sum value, this orientation is the main orientation of feature descriptor.
@@ -586,79 +582,10 @@ Search method: Grid over scale space\\
 Distance function: Euclidean\\
 Robustness: 4 (illumination, viewpoint, scale, noise)
 
+////////////// tlaking about WHY SURF number of features scale invariante and rotation ...BOW  clustering ... 
+and leave the talking about machine learning algorithm to the big summary with surf ..
 
-\section{Binary descriptors :}
-
-The SIFT keypoint detector and descriptor,4 although over a decade old, have proven to be remarkably successful
-in a number of applications using visual features, including object detection and recognition, image stitching,
-scene classification, etc. This descriptor has been also extended to color images in the form of RGB-SIFT,
-Opponent-SIFT and C-SIFT, as described by van de Sande et al. in.5 However, it requires an intensive computational
-effort, especially for real-time systems, or for low-power devices such as cellphones. This has led to
-an increased research for replacements with simpler descriptors with lower computation demands. This trend
-started with SURF,6 but since then a lot of other descriptors have been proposed in literature, always focusing
-not only on performance but also on speed: we can refer to ORB , BRISK ,BRIEF, FREAK among the most recent
-proposals. There has also been research aimed at speeding up the computation of SIFT, most notably with GPU
-devices, or the exploitation of approximate nearest neighbor techniques, starting from LSH up to product
-quantization.
-Also a great variety of global features has been proposed to tackle the retrieval problem, for example color
-histograms, GIST and HOG. Usually these features are easier to compute and do not require the quantization
-step typical of the bag-of-words model which is necessary to create a global representation (an histogram of visual
-words) from the aforementioned local descriptors.
-
-\subsection{The BRISK descriptor}
-The BRISK descriptor \cite{AA} point-pair sampling shape is symmetric and circular,
-composed of 60 total points arranged in four concentric rings, as shown in Figure \ref{fig:brisk}.
-Surrounding each of the 60 points is a sampling region shown in blue, the sampling
-regions increase in size with distance from the center, and also proportional to the
-distance between sample points. Within the sampling regions, Gaussian smoothing is
-applied to the pixels and a local gradient is calculated over the smoothed region.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.8\textwidth]{img/brisk.PNG}
-\caption{ (Left) BRISK concentric sampling grid pattern. (Center) Short segment pairs.
-(Right) Long distance pairs. Note that the size of the region (left image) for each selected
-point increases in diameter with distance from the center, and the binary comparison is
-computed from the center point of each Gaussian-sampled circular region, rather than
-from each solitary center point. (Center and right images used by permission © Josh
-Gleason \cite{AAA}) }
-\label{fig:brisk}
-\end{figure}
-
-
-Like other local binary descriptors, BRISK compares pairs of points to form the
-descriptor. The point- pairs are specified in two groups: (1) \textbf{long segments}, which are used
-together with the region gradients to determine angle and direction of the descriptor,
-the angle is used to rotate the descriptor area, and then the pair–wise sampling pattern is
-applied;(2) \textbf{short segments}, which can be pair-wise compared and composed into the
-512-bit binary descriptor vector.
-\subsection{ORB Descriptor }
-(Oriented FAST rotated BRISK) is a 
-combination of FAST and BRISK. To extract keypoints, it
-modifies the FAST detector as scale invariant by constructing a
-scale pyramid of the image. At each scale, keypoints are detected
-by illustrating the FAST detector. Once the keypoints detected,
-the Harris corner measure is employed to sort them and only top
-N points are chosen based on a threshold. To obtain rotation
-invariant features, first-order moments is used to compute the
-local orientation through an intensity centroid which refers to the
-weighted averaging of pixel magnitudes in the local patch.
-BRIEF descriptors further are computed on rotated patch and
-keeps the binary string as ORB descriptor.
-
-\subsection{FREAK }
-is also a binary descriptor and borrows the 
-procedures of sampling pattern and pair selection from BRISK. 
-It uses a circular pattern where the density of points exponentially
-drops when moving away from the center and called as retinal
-sampling grid that inspired by the retinal pattern in the eye. To
-provide rotation invariance property, an orientation for the 
-selected patch is computed by summing the local gradients over
-chosen pairs which are symmetric to each other with when center
-is considered as base. Also, in descriptor creation stage, a similar
-approach that was used in ORB is performed, simply the less
-correlated pattern is selected. Generally, the 512 binary tests are
-used in order to obtain maximum performance. 
+now the only pblm faced with this magnificant method is the real time response since its computationally expensive  hence the need for a fast Feature descriptor which is why are going to need  fouriere descriptor for its fast and accurate response for our HGR model .
 
 
 \section{Fourier Shape Descriptor } \label{FDT}
@@ -794,6 +721,7 @@ The label of the minimum distance gesture is used for classification .\\
 \end{tabular}
 \end{table}\\
 \newpage
+ 
  \section{ Conclusion : }
  in this chapter we went through Two types of descriptors :\\
 \textbf{the first} are  Local descriptors which contains two types \textbf{Spectra descriptors( SIFT and SURF ...) and Binary descriptors( ORB , FREAK ,BRIEF...)} , the spectra group of descriptors typically involves more intense computations and algorithms, often requiring floating point
