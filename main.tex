@@ -1,0 +1,241 @@
+
+\documentclass{report}           %% ceci est un commentaire (apres le caractere %)
+%\usepackage[ landscape, margin=1in]{geometry}
+
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\setlength{\parskip}{1em}
+\renewcommand{\baselinestretch}{2.0}
+
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,245mm},
+ left=20mm,
+ top=30mm,
+ }
+ 
+\usepackage{relsize}
+ 
+\usepackage{amsthm}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage[ruled,vlined,linesnumbered,noresetcount]{algorithm2e}
+\usepackage{algpseudocode}
+\usepackage{dsfont}
+\usepackage{tabu}
+\usepackage{graphicx}
+\graphicspath{ {img/} }
+%\graphicspath{ {figures/} }
+\usepackage{float}
+\usepackage[justification=centering]{subfig}
+\usepackage[colorlinks]{hyperref}
+\usepackage{hyperref} 
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=cyan,
+}
+%\usepackage{algorithm}
+%\usepackage{algpseudocode}
+\usepackage{algorithm2e}
+\usepackage{wrapfig}
+\usepackage{listings}
+\usepackage{caption}
+%\usepackage{array,multirow,makecell}
+%\setcellgapes{1pt}
+%\makegapedcells
+
+\usepackage{tabularx}
+
+ %\renewcommand{\familydefault}{\sfdefault}
+ 
+% \renewcommand{\familydefault}{\rmdefault}
+
+\usepackage{lmodern}
+\begin{document}
+
+
+
+%\maketitle\thispagestyle{empty}
+
+\begin{abstract}
+Our work revolves around the recognition of both hands  gesture in Real time using the kinect sensor and machine learning . At first we acquired depth image of the kinect , using its advantage of depth  data we were able to detect And perform gesture by  Considering that the minimum depth from the sensor  is the hand region , since the hand gestures are  usually held in front of  the body  , this  allow us to track the hand and also it gives  the user more  mobility around the sensor rather than working in a certain closed and predefined range  , then we have developed an algorithm for gesture classification using SURF (Speeded up robust features )descriptor with features quantization using Bag of Visual words approach from depth image , a second algorithm was developed to meet  real time requirement for such  application  is Fourier descriptor , these two algorithms were used to classify various Gestures by two Machine Learning algorithms (Support vector Machine and K-Nearest-Neighbor classifier )       
+\end{abstract}
+
+
+%content
+\tableofcontents
+
+\include{chapters/chapter1}
+\include{chapters/chapter2}
+\include{chapters/chapter3}
+\include{chapters/chapter4}
+\include{chapters/chapter5}
+
+
+
+\appendix
+\include{appendices/appendiceKinect}
+\include{appendices/appendiceOpencv}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\medskip
+
+
+
+\begin{thebibliography}{60}
+
+\bibitem{0}
+ Antonis  A Argyros  and  Manolis I A Lourakis.   Binocular  hand  tracking  and reconstruction  based on 2d shape matching. CPR, pages 207- 210, 2006.
+\bibitem{1}
+ P.  Buehler,  M. Everingham,  D. P. Huttenlocher,  and A. Zisserman.  Long term arm and hand  tracking  for continuous sign language TV broadcasts.   In British Machine  Vision Conference, 2008.
+\bibitem{2}   The  Duy Bui and Long Thang Nguyen. Recognizing postures in vietnamese sign language with MEMS accelerometers.  Iece Sensors Journal, 7(5):707712, 2007.
+\bibitem{3}
+  Helen Cooper and Richard Bowden. Large lexicon detection  of sign language.  In
+
+ICCV,  Workshop Human  Comp. Inter, 2007.
+
+\bibitem{4}
+   P Dreuw,  T Deselaers, D Ryba.ch, D Keysers,  and H Ney. Tracking using dynamic programming  for appearance-based  sign language recognition.  7th Internotional Conference on Automatic  Face and Gesture Recognition FGR06, 62(1):293-298,
+2006.
+
+\bibitem{5}
+   Philippe Dreuw, Jens Forster, and Hermann Ney.  Tracking benchmark databases for video-based sign language recognition.  In ECCV  International  Workshop on Sign Gesture and Activity  SCA  Crete Greece September 2010, 2010.
+\bibitem{6}
+  Philippe  Dreuw,   Carol  Neidle,   Vassilis Athitsos,    Stan  Sclaroff, and  Hermann Ney. Benchmark databases  for video-based automatic  sign language recognition. Pattern  Recognition, pages 6--6, 2008.
+\bibitem{7}
+  R L Graham.   An efficient algorithm  for determining  the convex hull of a finite planar  set.  Information  Processing Letters, 1(4):132--133, 1972. 
+\bibitem{700}
+  Y  Han.    A  low-cost  visual   motion   data   glove  as  an  input   device  to  interpret human   hand  gestures.   Ieee Trans Consum Electron, 56(2):501-509, 2010.
+\bibitem{8}
+  Guan-Feng He, Sun-Kyung Kang, Won-Chang Song, and Sung-Tae Jung.  Real- time gesture recognition using 3D depth  camera.  In Software Engineering and Service Science  (ICSESS),  2011 IEEE  2nd International  Conference on, pages
+187 -190, 2011.
+
+\bibitem{9}
+  Jos L. Hernndez-rebollar,  Robert V. Lindeman, and Nicholas Kyriakopoulos. A multi-class pattern  recognition system for practical finger spelling translation.  In In Proceedings of the 4th IEEE  International  Conference on Multimodal Inter- faces, pages 185-190, 2002.
+\bibitem{10}
+  Holger Kenn,  Friedrich Van Megen, and  Robert  Sugar.  A glove-based gesture interface  for wearable  computing  applications.    Applied  Wearable Computing
+(IFAWC),  2007 4th International  Forum on, pages 1  --10,   2007.
+'                   '
+
+\bibitem{11}
+  Ji-Hwan Kim, Nguyen Due Thang, and Tae-Seong Kim. 3-D hand motion track- ing and gesture recognition using a data  glove. In Itulustrial Electronics, 2009. ISIE  2009. IEEE  International  Symposium  on, pages 1013 -1018, 2009.
+\bibitem{12}
+ H Nanda and K Fujimura.  Visual tracking using depth  data.   2004 Conference on Computer  Vision and Pattern  Recognition Workshop, OO(C):37-37, 2004.
+\bibitem{13}
+   Eng-Jon Ong and Richard Bowden. A boosted classifier tree for hand shape de- tection.   In Proceedings of the Sixth IEEE international conference on Automatic face  and gesture recognition, FGR'  04, pages 889-894, Washington,  DC, USA,
+2004. IEEE Computer  Society.
+
+\bibitem{14}
+  OpenNI organization.  OpenNI User Guide, 2010. Last viewed 19-01-2011 11:32. 
+\bibitem{140}
+ Jagdish   L Raheja,   Ankit  Chaudhary,    and  Kunal   Singal.   Tracking   of fingertips and  centers   of palm  using  KINECT.     2011 Third International  Conference on Computational Intelligence Modelling Simulation, pages  248--252, 2011.
+\bibitem{15}
+ T Starner,   J  Weaver,  and  A Pentland.    Real-time   american   sign language   recog- nition   using  desk  and  wearable   computer   based  video.   IEEE  Transactions on Pattern  Analysis  and Machine Intelligence, 20(12):1371-1375,    1998.
+\bibitem{16}
+ Stefan   Stegrnueller.     Hand   and  finger  tracking   with   Kinect   depth   data,   2011.
+
+\url{http://candescentnui.codeplex.com}.
+
+\bibitem{17}
+ K N Tarchanidis   and  J  N Lygouras.   Data  glove with  a force sensor,  2003.
+
+\bibitem{18}
+   M. Van den  Bergh  and  L. Van Cool.  Combining   RGB  and  ToF  cameras  for real- time  3D hand  gesture  interaction.    In Applications of Computer Vision (WACV),
+2011 IEEE  Workshop on, pages  66 -72,  2011.
+
+\bibitem{19}
+ Cheoljong   Yang,  Yujeong  Jang,   Jounghoon   Beh,  David  Han,  and  Hanseok  Ko. Gesture   recognition   using  depth-based    hand   tracking   for  contactless   controller application.    In  Consumer Electronics (ICCE), 2012 IEEE International  Confer- ence on, pages  297 -298,  2012
+
+\bibitem{20}D. S. Zhang and G. J. Lu. A Comparative Study on Shape Retrieval
+Using Fourier Descriptors with Different Shape Signatures. In Proc. Int.
+Conference on Multimedia and Distance Education. Fargo, ND, USA,
+pp.1-9, June 2001. 
+\bibitem{21}
+Kai Guo; Ishwar, P.; Konrad, J., "Action Recognition in Video by Covariance
+Matching of Silhouette Tunnels," Computer Graphics and Image Processing
+(SIBGRAPI), 2009 XXII Brazilian Symposium on , vol., no., pp.299,306, 11-15 Oct.
+2009 
+
+\bibitem{AA}Leutenegger, Stefan, Margarita Chli, and Roland Y. Siegwart. “BRISK: Binary Robust
+Invariant Scalable Keypoints.” International Conference on Computer Vision, 2011.
+
+\bibitem{b} K. Ha, Y. Abe, Z. Chen, W. Hu, B. Amos, P. Pillai, and M. Satya- narayanan, “Adaptive vm handoff across cloudlets,” Technical Report CMU-CS-15-113, CMU School of Computer Science, Tech. Rep., 2015.
+
+\bibitem{c} S. K. Bose, S. Brock, R. Skeoch, and S. Rao, “Cloudspider: Combining replication with scheduling for optimizing live migration of virtual machines across wide area networks,” in Cluster, Cloud and Grid Computing (CCGrid), 2011 11th
+
+\bibitem{AAA}  Gleason, Josh, BRISK (Presentation by Josh Gleason) at International Conference on
+Computer Vision, 2011.
+
+\bibitem{d}  Ms. Lopa J. Vora “International Journal of Modern Trends in Engineering and Research (IJMTER)“ evol Volume 02, Issue 10, [October – 2015] ISSN (Online):2349–9745 ; ISSN (Print):2393-8161
+
+\bibitem{MM} Tuytelaars, T., Mikolajczyk, K.: Local invariant feature detectors: a survey. Found. Trends
+Comput. Graph. Vis. 3(3), 177–280 (2007)
+
+\bibitem{j}  Ito, Minami, Hiroshi Tamura, Ichiro Fujita, and Keiji
+Tanaka, “Size and position invariance of neuronal responses
+in monkey inferotemporal cortex,”
+Journal of Neurophysiol-
+ogy, 73, 1 (1995), pp. 218–226.
+
+
+\bibitem{f} Crowley, James L., and Alice C. Parker, “A representation
+for shape based on peaks and ridges in the difference of lowpass
+transform,”
+IEEE Trans. on Pattern Analysis and Ma-
+chine Intelligence,
+6, 2 (1984), pp. 156–170.
+
+\bibitem{e}Lindeberg, Tony, “Detecting salient blob-like image structures and their scales with a scale-space primal sketch:
+a method for focus-of-attention,”
+International Journal of
+Computer Vision,
+11, 3 (1993), pp. 283–318.
+
+
+\bibitem{g}  Dalal, Navneet, and Bill Triggs. “Histograms of Oriented Gradients for Human
+Detection.” Conference on Computer Vision and Pattern Recognition, 2005.
+
+
+\bibitem{h} Oliva, A., Torralba, A.: Modeling the shape of the scene: a holistic representation of the spatial
+envelope. Int. J. Comput. Vis. 42(3), 145–175 (2001)
+\bibitem{i} Bianco, S., Mazzini, D., Pau, D., Schettini, R.: Local detectors and compact descriptors for
+visual search: a quantitative comparison. Digital Signal Process. 44, 1–13 (2015)
+\bibitem{k} Jégou, H., Perronnin, F., Douze, M., Sánchez, J., Pérez, P., Schmid, C.: Aggregating local
+descriptors into a compact codes. IEEE Trans. Pattern Anal. Mach. Intell. 34(9), 1704–1716
+(2012)
+\bibitem{kinect}
+Microsoft, “Kinect for Windows Sensor Components and Specifications.” [Online]. Available: \url{http://msdn.microsoft.com/en-us/library/jj131033.aspx}Accessed: 06-Dec-2013 ]
+
+\bibitem{kinect1}
+ Microsoft, “Kinect Fact Sheet,” 2010. [Online]. Available: \url{www.microsoft.com/enus/news/presskits/xbox/docs/kinectfs.docx}.
+\bibitem{kinect15}
+M. Andersen, T. Jensen, and P. Lisouski, “Kinect depth sensor evaluation for computer
+vision applications,” 2012.
+\bibitem{kinect17}
+Microsoft, “Kinect for Windows - Human Interface Guidelines.” [Online]. Available:
+\url{http://msdn.microsoft.com/en-us/library/jj663791.aspx}.
+\bibitem{kinect18}
+J. Webb and J. Ashley, Beginning Kinect Programming with the Microsoft Kinect SDK.
+Apress, 2012
+\bibitem{kinect20}
+Microsoft, “Coordinate Space.” [Online]. Available: \url{http://msdn.microsoft.com/enus/library/hh973078.aspx#Depth\_Ranges}.
+[Accessed: 06-Dec-2013].
+
+\bibitem{clif}
+C. Chan, S. S. Mirfakhrae, “ Hand Gesture Recognition using
+Kinect”, Bchelor Thesis, Boston University Department of
+Electrical and Computer Engineering ,Boston, Dec 13, 2013.
+\bibitem{kmeans}
+J. B. MacQueen (1967): "Some Methods for classification and Analysis of Multivariate Observations, Proceedings of 5-th Berkeley Symposium on Mathematical Statistics and Probability", Berkeley, University of California Press, 1:281-297
+\bibitem{Arthur} 
+Arthur, D.; Vassilvitskii, S. (2007). "k-means++: the advantages of careful seeding" (PDF). Proceedings of the eighteenth annual ACM-SIAM symposium on Discrete algorithms. Society for Industrial and Applied Mathematics Philadelphia, PA, USA. pp. 1027–1035.
+\end{thebibliography}
+
+
+
+\end{document}
