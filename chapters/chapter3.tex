@@ -311,9 +311,10 @@ on the order of 1000 key points for a typical
 image, compared to only a quarter as many without the initial
 expansion.
 
-\textbf{Summary of this section :}\\
+\textbf{Summary of this section :}
 
 Here, we detected the maxima and minima in the DoG images generated in the previous step. This is done by comparing neighbouring pixels in the current scale, the scale "above" and the scale "below".
+
 
 \subsection{Orientation assignment :}
 By assigning a consistent orientation to each keypoint based on local image properties,
@@ -505,82 +506,17 @@ Now it’s time to extract the descriptor. First we construct a square region ce
 \label{fig:surf5}
 \end{figure}
 
-We extract the sum of values of the responses in both x and y orientation, furthermore, we extract the sum of the absolute values of the responses, hence, each sub-region has a 4-D descriptor vector v. Concatenating this for all 4$\times$4 sub-regions, our final descriptor is a 64-D vector. (In Sift, our descriptor is 128-D vector, so this is part of the reason that SURF is faster than Sift.)
+We extract the sum of values of the responses in both x and y orientation, furthermore, we extract the sum of the absolute values of the responses, hence, each sub-region has a 4-D descriptor vector v. Concatenating this for all 4$\times$4 sub-regions, our final descriptor is a 64-D vector. (In Sift, our descriptor is 128-D vector, so this is part of the reason that SURF is faster than Sift.)\\
 
 
-\subsection{Histogram of Gradients (HOG) Descriptor  and its Variants :}
+\section{Differences and Preference :}
+The two main advantages of SURF over SIFT is that SURF uses Laplacian of Gaussian so as to have a distinction
+between background and foreground features, and secondly, SURF uses only 64 dimensional vector compared to 128 dimensional vector for SIFT . This helps in fast feature computation and also the quick matching capability.
+The two different steps used by SURF to determine the local descriptor vectors are A. Keypoint Detection B. Keypoint Descriptor, which were  explained above \ref{} and \ref{}.
 
-The Histogram of Gradients (HOG) method \cite{g} is intended for image classification,
-and relies on computing local region gradients over a dense grid of overlapping blocks,
-rather than at interest points. HOG is appropriate for some applications, such as person
-detection, where the feature in the image is quite large.
-HOG operates on raw data; while many methods rely on Gaussian smoothing and
-other filtering methods to prepare the data, HOG is designed specifically to use all the
-raw data without introducing filtering artifacts that remove fine details. The authors show
-clear benefits using this approach. It’s a tradeoff: \textit{filtering artifacts} such as smoothing vs.
-image artifacts such as fine details. The HOG method shows preferential results for the
-raw data. See Figure 4-12, showing a visualization of a HOG descriptor.
-Major aspects in the HOG method are as follows:
+This makes Surf as our best candidate for gesture recognition  since it offers high number of stable features against Scale invariance and rotation invariance , of course lesser than Sift but it does not worth the Computational operations of up scaling pyramid used in sift Nor the \textbf{valuable }time consumed .
 
-\begin{itemize}
-\item Raw RGB image is used with no color correction or noise filtering,
-using other color spaces and color gamma adjustment provided
-little advantage for the added cost
-\item Prefers a 64x128 sliding detector window; 56x120 and 48x112
-sized windows were also tested. Within this detector window, a
-total of 8x16 8x8 pixel block regions are defined for computation
-of gradients. Block sizes are tunable.
-\item For each 8x8 pixel block, a total of 64 local gradient magnitudes
-are computed. The preferred method is simple line and column
-derivatives [-1,0,1] in x/y; other gradient filter methods are tried,
-but larger filters with or without Gaussian filtering degrade
-accuracy and performance. Separate gradients are calculated for
-each color channel
-\item Local gradient magnitudes are binned into a 9-bin histogram of
-edge orientations, quantizing dimensionality from 64 to 9, using
-bilinear interpolation; $<$9 bins produce poorer accuracy, $>$9 bins
-does not seem to matter. Note that either rectangular R-HOG or
-circular log polar C-HOG binning regions can be used.
-\item Normalization of gradient magnitude histogram values to
-unit length to provide illumination invariance. Normalization
-is performed in groups, rather than on single histograms.
-Overlapping 2x2 blocks of histograms are used within the detector
-window; the block overlapping method reduces sharp artifacts,
-and the 2x2 region size seems to work best.
-\item For the 64x128 pixel detector window method, a total of 128
-8x8 pixel blocks are defined. Each 8x8 block has four cells for
-computing separate 9-bin histograms. The total descriptor size is
-then 8x16x4x9=4608.
-\end{itemize}
-Note that various formulations of the sliding window and block sizes are used for
-dealing with specific application domains. See Figure 4-12, showing a visualization of
-HOG descriptor computed using 7x15 8x8 pixel cells. Key findings from the HOG \cite{g}
-design approach include:
-\begin{itemize}
-\item The abrupt edges at fine scales in the raw data are required for
-accuracy in the gradient calculations, and post-processing and
-normalizing the gradient bins later works well
-\item L2 style block normalization of local contrast is preferred and
-provides better accuracy over global normalization; note that the
-local region blocks are overlapped to assist in the normalization.
-\item Dropping the L2 block normalization stage during histogram
-binning reduces accuracy by 27 percent.
-\item HOG features perform much better than HAAR-style detectors,
-and this makes sense when we consider that a HAAR wavelet is
-an integrated directionless value, while gradient magnitude and
-direction over the local HOG region provides a richer spectra.
-
-\end{itemize}
-
-\textbf{HOG Summary Taxonomy}\\
-\\
-Spectra: Local region gradient histograms\\
-Feature shape: Rectangle or circle\\
-Feature pattern: Dense  64$\times$128  typical rectangle\\
-Feature density: Dense overlapping blocks\\
-Search method: Grid over scale space\\
-Distance function: Euclidean\\
-Robustness: 4 (illumination, viewpoint, scale, noise)
+   later on we will Experimentally demonstrate that Surf achieved  better accuracy than sift in Hand gesture . However Even if Surf is less expensive than sift but still computationally expensive which is bad for our purposes ,Since what describe a Good HGR is its ability to interpret  and interact with the Signer performer in real time , That's where Fouriere descriptor Appears to give accurate and a Very Fast feature extractor   
 
 ////////////// tlaking about WHY SURF number of features scale invariante and rotation ...BOW  clustering ... 
 and leave the talking about machine learning algorithm to the big summary with surf ..
