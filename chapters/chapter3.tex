@@ -43,14 +43,14 @@ on hand. Developers prefer the most discriminative ones. For example, a person w
 a bigger nose and smaller eyes, and a person with a smaller nose and bigger eyes
 may have similar mug shot in terms of histogram or intensity distribution. Then, local
 features or the global pattern distilled from local feature clusters seem to be more
-discriminative. Whereas, for very large datasets in the web-scale image indexing
+discriminative. Whereas, for very large datasets in the web scale image indexing
 application, it is appropriate to consider global features. Also, global features are
 useful in applications where a rough segmentation of the object of interest is available.
 The advantages of global features are that they are much faster and compact
 while easy to compute and generally require small amounts of memory.\\ Nevertheless,
-the global representation suffers from well-known limitations, in particular they
+the global representation suffers from well known limitations, in particular they
 are not invariant to significant transformations and sensitive to clutter and occlusion.\\In some applications, such as copy detection, most of the illegal copies are very  similar to the original; they have only suffered from compression, scaling or limited
-cropping. In contrast, the advantage of local features is their superior performance \cite{i}. Meanwhile, using local features for large-scale image search have much higher performance than global features provide \cite{k}.\\ Besides, as the local structures are more distinctive and stable than other structures in smooth regions, it is expected to be more useful for image matching and object recognition.\\ However, they usually require a significant amount of memory because the image may have hundreds of local features.\\ As a solution for this problem, researchers suggest aggregating local image descriptors into a very compact vector representation and optimizing the
+cropping. In contrast, the advantage of local features is their superior performance \cite{i}. Meanwhile, using local features for large scale image search have much higher performance than global features provide \cite{k}.\\ Besides, as the local structures are more distinctive and stable than other structures in smooth regions, it is expected to be more useful for image matching and object recognition.\\ However, they usually require a significant amount of memory because the image may have hundreds of local features.\\ As a solution for this problem, researchers suggest aggregating local image descriptors into a very compact vector representation and optimizing the
 dimensionality reduction of these vectors \cite{k}
 
 
@@ -78,7 +78,7 @@ correspondences are needed to estimate the epipolar geometry.
 \item Generality, the feature detection algorithm should be able to detect features that
 can be used in different applications.
 \item Efficiency, the feature detection algorithm should be able to detect features in new
-images quickly to support real-time applications.
+images quickly to support real time applications.
 \item Quantity, the feature detection algorithm should be able to detect all or most of the
 features in the image. Where, the density of detected features should reflect the
 information content of the image for providing a compact image representation.
@@ -88,7 +88,7 @@ information content of the image for providing a compact image representation.
 \section{Spectra descriptors :}
 \subsection{SIFT - Scale Invariant Feature Transforms} \label{siftSection}
 
-The Scale Invariant Feature Transform (SIFT) developed by Lowe \ref{} is the most well-known method for finding interest points and feature descriptors, providing invariance to scale, rotation, illumination, affine distortion, perspective and similarity
+The Scale Invariant Feature Transform (SIFT) developed by Lowe \ref{} is the most well known method for finding interest points and feature descriptors, providing invariance to scale, rotation, illumination, affine distortion, perspective and similarity
 transforms, and noise. Lowe demonstrates that by using several SIFT descriptors together to describe an object, there is additional invariance to occlusion and clutter. We provide some detail here on SIFT since it is well designed and well known.
 
 
@@ -125,9 +125,7 @@ images and stored in a database.\\ A new image is matched by individually compar
 each feature from the new image to this previous database and finding candidate matching
 features based on Euclidean distance of their feature vectors.\\
 The keypoint descriptors are highly distinctive, which allows a single feature to find its
-correct match with good probability in a large database of features. \\
-
-
+correct match with good probability in a large database of features. 
 
 
 
@@ -139,9 +137,9 @@ can be repeatably assigned under differing views of the same object. Detecting l
 that are invariant to scale change of the image requires that we search for stable features
 across all possible changes of scale, using a continuous function of scale known as scale
 space (Witkin, 1983).\\
-It has been shown by Koenderink (1984) and Lindeberg (1994) that under a variety of reasonable assumptions the only possible scale-space kernel is the Gaussian function.
+It has been shown by Koenderink (1984) and Lindeberg (1994) that under a variety of reasonable assumptions the only possible scale space kernel is the Gaussian function.
 Therefore, the scale space of an image is defined as a function, L(x, y, $\sigma$), that is produced
-from the convolution of a variable-scale Gaussian, G(x, y,$\sigma$), with an input image, I(x, y):\\
+from the convolution of a variable scale Gaussian, G(x, y,$\sigma$), with an input image, I(x, y):\\
 
 L(x, y, $\sigma$) = G(x, y,$\sigma$) * I(x, y),
 
@@ -153,7 +151,7 @@ where * is the convolution operation in x and y, and
 \end{align*}
 
 To efficiently detect stable keypoint locations in scale space, we have proposed (Lowe,
-1999) using scale-space peaks in the difference-of-Gaussian function convolved with the
+1999) using scale space peaks in the difference-of-Gaussian function convolved with the
 image, D(x, y, $\sigma$), which can be computed from the difference of two nearby scales separated
 by a constant factor k:
 \begin{align}
@@ -168,16 +166,16 @@ subtraction.
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=1.0\textwidth]{img/sift_dog.jpg}
+\includegraphics[width=0.8\textwidth]{img/sift_dog.jpg}
 \caption{ For each octave of scale space, the initial image is repeatedly convolved with Gaussians to
 produce the set of scale space images shown on the left. Adjacent Gaussian images are subtracted
 to produce the difference-of-Gaussian images on the right. After each octave, the Gaussian image
-is down-sampled by a factor of 2, and the process repeated.}
+is down sampled by a factor of 2, and the process repeated.}
 \label{fig:sift1}
 \end{figure}
 
 In addition, the difference-of-Gaussian function provides a close approximation to the
-scale-normalized Laplacian of Gaussian, $\sigma^2\nabla^2 G $
+scale normalized Laplacian of Gaussian, $\sigma^2\nabla^2 G $
 , as studied by Lindeberg (1994).\\Lindeberg
 showed that the normalization of the Laplacian with the factor $\sigma^2$
 is required for true scale invariance. In detailed experimental comparisons, Mikolajczyk (2002) found that the maxima and minima of $\sigma^2\nabla^2 G $  produce the most stable image features compared to a range
@@ -237,7 +235,7 @@ computation is greatly reduced.
 
 \textbf{Summary of the section :}
 
-In the first step of SIFT, you generate several octaves of the original image. Each octave's image size is half the previous one. Within an octave, images are progressively blurred using the Gaussian Blur operator.
+In the first step of SIFT, it generates several octaves of the original image. Each octave's image size is half the previous one. Within an octave, images are progressively blurred using the Gaussian Blur operator.
 next we use all these octaves to generate Difference of Gaussian images ( Dog ) Two consecutive images in an octave are picked and one is subtracted from the other. Then the next consecutive pair is taken, and the process repeats. This is done for all octaves. The resulting images are an approximation of scale invariant laplacian of gaussian which is good for detecting keypoints .
 
 
@@ -267,7 +265,7 @@ two passes of the 1D Gaussian function in the horizontal
 and vertical directions:
 
 \begin{align}
-     g(x)  =\frac{1}{\sqrt{2\pi}\sigma} e^\frac{-x^2}{2\sigma^2}
+     g(x)  =\frac{1}{\sqrt{2\pi}\sigma} e^\frac{x^2}{2\sigma^2}
 \end{align}
 
 
@@ -289,7 +287,7 @@ peaks.\\ The 1.5 spacing means that each newsample will
 be a constant linear combination of 4 adjacent pixels. This
 is efficient to compute and minimizes aliasing artifacts that
 would arise from changing the resampling coefficients.\\
-Maxima and minima of this scale-space function are determined
+Maxima and minima of this scalespace function are determined
 by comparing each pixel in the pyramid to its
 neighbours. First, a pixel is compared to its 8 neighbours at
 the same level of the pyramid.\\ If it is a maxima or minima
@@ -328,7 +326,7 @@ consistent rotation.\\
 Following experimentation with a number of approaches to assigning a local orientation,
 the following approach was found to give the most stable results. The scale of the
 keypoint is used to select the Gaussian smoothed image, L, with the closest scale, as all
-computations must be performed in a scale-invariant manner. For each image sample, $L_{x,y}$ ,the gradient magnitude, m, and orientation, $\theta$, is precomputed using pixel differences:
+computations must be performed in a scale invariant manner. For each image sample, $L_{x,y}$ ,the gradient magnitude, m, and orientation, $\theta$, is precomputed using pixel differences:
 
 \begin{align}
  m  =\sqrt{(L_{x+1,y} - L_{x-1,y})^2 + (L_{x,y+1} - L_{x,y-1})^2}
@@ -405,7 +403,7 @@ First, the vector is normalized to unit length. A change in image contrast in wh
 pixel value is multiplied by a constant will multiply gradients by the same constant, so this
 contrast change will be cancelled by vector normalization. A brightness change in which a
 constant is added to each image pixel will not affect the gradient values, as they are computed
-from pixel differences. However, non-linear illumination changes can also occur due
+from pixel differences. However, non linear illumination changes can also occur due
 to camera saturation or illumination changes that affect surfaces with different orientations
 by differing amounts. These effects can cause a large change in relative magnitudes for
 some gradients, but are less likely to affect the gradient orientations. Therefore, we reduce
@@ -417,7 +415,7 @@ differing illuminations for the same objects\\
 
 \textbf{Summary of the section }
 
-You take a 16x16 window of "in-between" pixels around the keypoint. You split that window into sixteen 4x4 windows. From each 4x4 window you generate a histogram of 8 bins. Each bin corresponding to 0-44 degrees, 45-89 degrees. Gradient orientations from the 4x4 are put into these bins. This is done for all 4x4 blocks. Finally, you normalize the 128 values .
+Sift take  a 16x16 window of "in-between" pixels around the keypoint. split that window into sixteen 4x4 windows. From each 4x4 window it generate a histogram of 8 bins. Each bin corresponding to 0-44 degrees, 45-89 degrees. Gradient orientations from the 4x4 are put into these bins. This is done for all 4x4 blocks. Finally, it normalize the 128 values .
 
 \subsection{Speeded Up Robust Features (SURF) :}
 SURF (Speeded Up Robust Features), is a feature detector, we talked about SIFT before, and SURF is sort of derivative of SIFT. SURF is based on sums of 2D Haar wavelet responses and makes an efficient use of integral images.
@@ -482,7 +480,7 @@ SURF(right) uses larger and larger filters}
 \label{fig:surf2}
 \end{figure}
 
- Instead of iteratively reducing the image size (left), the use of integral images allows the up-scaling of the filter at constant cost (right).\\
+ Instead of iteratively reducing the image size (left), the use of integral images allows the upscaling of the filter at constant cost (right).\\
  
  \subsection{ABOUT FEATURE DESCRIPTOR}
  In Sift, we use an orientation histogram, and find the largest orientation value and also those values that are over 80\% of the largest, and use these orientations as the main orientation of the feature descriptor. In Surf, we use the sum of the Haar wavelet response around the point of interest.
@@ -494,9 +492,9 @@ SURF(right) uses larger and larger filters}
 \label{fig:surf3}
 \end{figure}
 
-We first calculate the Haar wavelet responses in x and y direction within a circular neighborhood of radius 6s around the interest point, with s the scale at which the interest point was detected. We calculate the sum of vertical and horizontal wavelet responses in a scanning aria, then change the scanning orientation (add $\pi$/3), and re-calculate, until we find the orientation with largest sum value, this orientation is the main orientation of feature descriptor.
+We first calculate the Haar wavelet responses in x and y direction within a circular neighborhood of radius 6s around the interest point, with s the scale at which the interest point was detected. We calculate the sum of vertical and horizontal wavelet responses in a scanning aria, then change the scanning orientation (add $\pi$/3), and recalculate, until we find the orientation with largest sum value, this orientation is the main orientation of feature descriptor.
 
-Now it’s time to extract the descriptor. First we construct a square region centered around the feature point, and oriented along the main orientation we already got above, the size of this window is 20s,s is the scale at which the interest point was detected. Second we split this region up regularly into smaller 4$\times$4 square subregions, for each sub-region, we compute Haar wavelet responses at 5$\times$5 regularly spaced sample points.
+Now it’s time to extract the descriptor. First we construct a square region centered around the feature point, and oriented along the main orientation we already got above, the size of this window is 20s,s is the scale at which the interest point was detected. Second we split this region up regularly into smaller 4$\times$4 square subregions, for each subregion, we compute Haar wavelet responses at 5$\times$5 regularly spaced sample points.
 
 
 \begin{figure}[H]
@@ -506,7 +504,7 @@ Now it’s time to extract the descriptor. First we construct a square region ce
 \label{fig:surf5}
 \end{figure}
 
-We extract the sum of values of the responses in both x and y orientation, furthermore, we extract the sum of the absolute values of the responses, hence, each sub-region has a 4-D descriptor vector v. Concatenating this for all 4$\times$4 sub-regions, our final descriptor is a 64-D vector. (In Sift, our descriptor is 128-D vector, so this is part of the reason that SURF is faster than Sift.)\\
+We extract the sum of values of the responses in both x and y orientation, furthermore, we extract the sum of the absolute values of the responses, hence, each subregion has a 4-D descriptor vector v. Concatenating this for all 4$\times$4 subregions, our final descriptor is a 64-D vector. (In Sift, our descriptor is 128-D vector, so this is part of the reason that SURF is faster than Sift.)\\
 
 
 \section{Differences and Preference :}
@@ -546,7 +544,7 @@ is the complex form of the boundary coordinates \cite{20}. \\
 For each shape we select N points with equal point
 sampling. In order to facilitate the use of Fast Fourier
 Transform (FFT), the number of sampled points is chosen to
-be power-of-two. Assuming the number of sampled points is
+be power of two. Assuming the number of sampled points is
 N the Fourier transform gives N Fourier coefficients Cl. The
 coefficients are usually called Fourier descriptors of the shape. 
 \begin{gather}

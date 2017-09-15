@@ -3,23 +3,23 @@
 
 \section{What Is Machine Learning?}
 
-Machine learning is a sub-field of artificial intelligence (AI) concerned with algorithms
+Machine learning is a sub field of artificial intelligence (AI) concerned with algorithms
 that allow computers to learn. What this means, in most cases, is that an
 algorithm is given a set of data and infers information about the properties of the
 data and that information allows it to make predictions about other data that it
 might see in the future. This is possible because almost all nonrandom data contains
 patterns, and these patterns allow the machine to generalize, in order to do as such, it
-trains a model with what it determines are the important aspects of the data.\\
-\newline
+trains a model with what it determines are the important aspects of the data.
+\
 To understand how models come to be, consider a simple example in the otherwise
 complex field of email filtering. Suppose you receive a lot of spam that contains the
 words “online pharmacy.” As a human being, you are well equipped to recognize patterns,
 and you quickly determine that any message with the words “online pharmacy” is spam and should be moved directly to the trash, this is a generalization you have,
 in fact, created a mental model of what is spam.\\ After you report several of these
-messages as spam, a machine-learning algorithm designed to filter spam should be
-able to make the same generalization.\\
-\newline
-There are many different machine-learning algorithms, all with different strengths
+messages as spam, a machine learning algorithm designed to filter spam should be
+able to make the same generalization.
+
+There are many different machine learning algorithms, all with different strengths
 and suited to different types of problems. Some, such as decision trees, are transparent,
 so that an observer can totally understand the reasoning process undertaken by
 the machine. Others, such as neural networks, are blackbox, meaning that they produce
@@ -28,17 +28,18 @@ Many machine-learning algorithms rely heavily on mathematics and statistics, acc
 analysis and regression are both basic forms of machine learning. 
 \section{Supervised Machine Learning}
 
-The majority of practical machine learning uses supervised learning.\\
+The majority of practical machine learning uses supervised learning.
+
 Supervised learning is where we have input variables (x) and an output variable (Y) and we use an algorithm to learn the mapping function from the input to the output.
-\newline
+
 $Y = f(X)$
-\newline
+
 The goal is to approximate the mapping function so well that when we have new input data (x) that we can predict the output variables (Y) for that data.
-\newline
+
 It is called supervised learning because the process of an algorithm learning from the training dataset can be thought of as a teacher supervising the learning process.\\ We know the correct answers, the algorithm iteratively makes predictions on the training data and is corrected by the teacher. Learning stops when the algorithm achieves an acceptable level of performance.\\
-\newline
-Supervised learning problems can be further grouped into regression and classification problems.\\
-\newline
+
+Supervised learning problems can be further grouped into regression and classification problems.
+
 \textbf{Classification:} A classification problem is when the output variable is a category, such as “red” or “blue” or “disease” and “no disease”.\\ \textbf{Regression:}  A regression problem is when the output variable is a real value, such as “dollars” or “weight”.
 Some common types of problems built on top of classification and regression include recommendation and time series prediction respectively.
 
@@ -99,7 +100,7 @@ The SVM technique is a classifier that finds a hyperplane or a function $g(x) = 
 
 \subsection{Soft-Margin SVM}
 
-When the data are not completely separable, as with the points marked by a X in Figure below  , slack variables Xi  are introduced to the SVM objective function to allow error in the misclassification. SVM, in this case, is not searching for the hard margin, which will classify all data flawlessly. Instead, SVM is now a soft-margin classifier; that is, SVM is classifying most of the data correctly, while allowing the model to misclassify a few points in the vicinity of the separating boundary
+When the data are not completely separable, as with the points marked by a X in Figure below  , slack variables Xi  are introduced to the SVM objective function to allow error in the misclassification. SVM, in this case, is not searching for the hard margin, which will classify all data flawlessly. Instead, SVM is now a soft margin classifier; that is, SVM is classifying most of the data correctly, while allowing the model to misclassify a few points in the vicinity of the separating boundary
 
 \begin{figure}[H]
 \centering
@@ -159,14 +160,12 @@ Kernel selection is heavily dependent on the data specifics. For instance, the l
 of all—is useful in large sparse data vectors. However, it ranks behind the polynomial kernel, which avoids
 zeroing the Hessian. \\The polynomial kernel is widely used in image processing, The Gaussian and Laplace RBFs are general-purpose kernels
 that are mostly applied in the absence of prior knowledge. \\A kernel matrix that ends up being diagonal indicates that the feature space is redundant and that another kernel should be tried after feature reduction.\\
-\newline
-\newline
+
 \textbf{
 Note} that when kernels are used to transform the feature vectors from input space to kernel space for linearly non-separable datasets, the kernel matrix computation requires massive memory and computational
 resources, for big data . 
 
-\par
-\par
+
 
 \section{Nearest Neighbour Based Classifiers}
 One of the simplest decision procedures that can be used for classification is the
@@ -249,7 +248,7 @@ In pattern recognition, the k-nearest neighbors algorithm (k-NN) is a non-parame
 \item In k-NN regression, the output is the property value for the object. This value is the average of the values of its k nearest neighbors.
 \end{itemize}
 
-k-NN is a type of instance-based learning, or lazy learning, where the function is only approximated locally and all computation is deferred until classification. The k-NN algorithm is among the simplest of all machine learning algorithms.\\ Both for classification and regression, it can be useful to assign weight to the contributions of the neighbors, so that the nearer neighbors contribute more to the average than the more distant ones. For example, a common weighting scheme consists in giving each neighbor a weight of 1/d, where d is the distance to the neighbor.\\ The neighbors are taken from a set of objects for which the class (for k-NN classification) or the object property value (for k-NN regression) is known. This can be thought of as the training set for the algorithm, though no explicit training step is required.
+k-NN is a type of instance based learning, or lazy learning, where the function is only approximated locally and all computation is deferred until classification. The k-NN algorithm is among the simplest of all machine learning algorithms.\\ Both for classification and regression, it can be useful to assign weight to the contributions of the neighbors, so that the nearer neighbors contribute more to the average than the more distant ones. For example, a common weighting scheme consists in giving each neighbor a weight of 1/d, where d is the distance to the neighbor.\\ The neighbors are taken from a set of objects for which the class (for k-NN classification) or the object property value (for k-NN regression) is known. This can be thought of as the training set for the algorithm, though no explicit training step is required.
 
 \subsubsection{Modified k-Nearest Neighbour (MkNN) Algorithm}
 This algorithm is similar to the kNN algorithm, inasmuch as it takes the k nearest
@@ -382,20 +381,20 @@ The choice of the actual machine learning algorithm (e.g. SVM or logistic regres
 There may be certain qualities we look for in an model:
 
 \begin{itemize}
-\item Interpretable - can we see or understand why the model is making the decisions it makes?
-\item Simple - easy to explain and understand
+\item Interpretable   can we see or understand why the model is making the decisions it makes?
+\item Simple   easy to explain and understand
 \item Accurate
 \item Fast (to train and test)
 \item Scalable (it can be applied to a large dataset)
 
 \end{itemize}
-Though there are generally trade-offs amongst these qualities.
+Though there are generally trade offs amongst these qualities.
 
 \subsection{Model evaluation} 
 in order to select amongst models, we need some way of evaluating their performance.
 we can't evaluate a model's hypothesis function with the cost function because minimizing the error can lead to overfitting.
 A good approach is splitting the data  not  only into training and testing sets, but to also include a validation set. A typical ratio is 60\% training, 20\% validation, 20\% testing.
-\textbf{Validation} is used mainly to tune hyperparameters - we don't want to tune them on the training set because that can result in \textit{overfitting}, nor do we want to tune them on our test set because that results in an overly optimistic estimation of generalization. Thus we keep a separate set of data for the purpose of validation, that is, for tuning the hyperparameters - the validation set.\\
+\textbf{Validation} is used mainly to tune hyperparameters   we don't want to tune them on the training set because that can result in \textit{overfitting}, nor do we want to tune them on our test set because that results in an overly optimistic estimation of generalization. Thus we keep a separate set of data for the purpose of validation, that is, for tuning the hyperparameters   the validation set.\\
 we can use this method  to identify what kind of problem we have if our model isn't performing well:
 
 \begin{itemize}
@@ -455,7 +454,7 @@ here is some important quantities we need to know in order to evaluate a model :
 \subsubsection{Area under the curve (AUC)}
 
 This method is for binary classification and multilabel classification. In binary classification we may choose some cutoff above which we assign a sample to one class, and below which we assign a sample to the other class.Depending on our cutoff, we will get different results - there is a trade off between the true and false positive rates.\\
-we can plot a Receiver Operating Characteristic (ROC) curve, which has for its y-axis \textbf{P(TP)}  and for its x-axis \textbf{P(FP)} . Every point on the curve corresponds to a cutoff value. That is, the ROC curve visualizes a sweep through all the cutoff thresholds so we can see the performance of our classifier across all cutoff thresholds, whereas other metrics (such as the F-score and so on) only tell we the performance for one particular cutoff. By looking at all thresholds at once, we get a more complete and honest picture of how our classifier is performing, in particular, how well it is separating the classes. It is insensitive to the bias of the data's classes - that is, if there are way more or way less of the positive class than there are of the negative class (other metrics may be deceptively favorable or punishing in such unbalanced circumstances).
+we can plot a Receiver Operating Characteristic (ROC) curve, which has for its y-axis \textbf{P(TP)}  and for its x-axis \textbf{P(FP)} . Every point on the curve corresponds to a cutoff value. That is, the ROC curve visualizes a sweep through all the cutoff thresholds so we can see the performance of our classifier across all cutoff thresholds, whereas other metrics (such as the F-score and so on) only tell we the performance for one particular cutoff. By looking at all thresholds at once, we get a more complete and honest picture of how our classifier is performing, in particular, how well it is separating the classes. It is insensitive to the bias of the data's classes  that is, if there are way more or way less of the positive class than there are of the negative class (other metrics may be deceptively favorable or punishing in such unbalanced circumstances).
 
 The area under the curve (AUC) is used to quantify how good the classification algorithm is. In general, an AUC of above 0.8 is considered "good". An AUC of 0.5 (a straight line) is equivalent to random guessing.  
 
@@ -469,7 +468,7 @@ The area under the curve (AUC) is used to quantify how good the classification a
 So ROC curves (and the associated AUC metric) are very useful for evaluating binary classification.\\Note that ROC curves can be extended to classification of three or more classes by using the one-vs-all approach \\
 
 \textbf{AUC incorporate the explanation below as well :}
-AUC is a metric for binary classification and is especially useful when dealing with high-bias data, that is, where one class is much more common than the other. Using accuracy as a metric falls apart in high-bias datasets: for example, say ou have 100 training examples, one of which is is positive, the rest of which are negative. we could develop a model which just labels every thing negative, and it would have 99\% accuracy. So accuracy doesn't really tell  enough here.\\Many binary classifies output some continuous value (0-1), rather than class labels; there is some threshold (usually 0.5) above which one label is assigned, and below which the other label is assigned. Some models may work best with a different threshold. Changing this threshold leads to a trade off between true positives and false positives - for example, decreasing the threshold will yield more true positives, but also more false positives.\\AUC runs over all thresholds and plots the the true vs false positive rates. This curve is called a receiver operating characteristic curve, or ROC curve. A random classifier would give we equal false and true positives, which leads to a AUC of 0.5; the curve in this case would be a straight line. The better the classifier is, the more area under the curve there is (so the AUC approaches 1).
+AUC is a metric for binary classification and is especially useful when dealing with high-bias data, that is, where one class is much more common than the other. Using accuracy as a metric falls apart in high-bias datasets: for example, say ou have 100 training examples, one of which is is positive, the rest of which are negative. we could develop a model which just labels every thing negative, and it would have 99\% accuracy. So accuracy doesn't really tell  enough here.\\Many binary classifies output some continuous value (0-1), rather than class labels; there is some threshold (usually 0.5) above which one label is assigned, and below which the other label is assigned. Some models may work best with a different threshold. Changing this threshold leads to a trade off between true positives and false positives   for example, decreasing the threshold will yield more true positives, but also more false positives.\\AUC runs over all thresholds and plots the the true vs false positive rates. This curve is called a receiver operating characteristic curve, or ROC curve. A random classifier would give we equal false and true positives, which leads to a AUC of 0.5; the curve in this case would be a straight line. The better the classifier is, the more area under the curve there is (so the AUC approaches 1).
 
 \subsubsection{Confusion Matrices}
 This method is suitable for binary or multiclass classification.
