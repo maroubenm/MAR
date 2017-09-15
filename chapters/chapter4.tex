@@ -49,25 +49,7 @@ Support vector machines for classification problems.
 
 
 
-\section{Unsupervised learning}
 
-In supervised learning, the aim is to learn a mapping from the input to
-an output whose correct values are provided by a supervisor.\\
-In unsupervised
-learning, there is no such supervisor and we only have input data.
-The aim is to find the regularities in the input, there is a structure to the
-input space such that certain patterns occur more often than others, and we want to see what generally happens and what does not. In statistics, this is called density estimation.
-One method for density estimation is clustering where the aim is to
-find clusters or groupings of input.\\ 
-Some popular examples of unsupervised learning algorithms are:
-
-
-\begin{itemize}
-  \item k-means for clustering problems.
-  \item Apriori algorithm for association rule learning problems.
-\end{itemize}
-
-\par
 
 
 
@@ -290,151 +272,25 @@ a weighted majority rule. This would mean that outlier patterns have lesser effe
 classification
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Artificiel Neural Network}
-The architecture of an artificial neural network defines how its several neurons are
-arranged, or placed, in relation to each other. These arrangements are structured
-essentially by directing the synaptic connections of the neurons.
-The topology of a given neural network, within a particular architecture, can be
-defined as the different structural compositions it can assume. In other words, it is
-possible to have two topologies belonging to the same architecture, where the first
-topology is composed of 10 neurons, and the second is composed of 20 neurons.
-Moreover, one can consist of neurons with logistic activation function, while the
-other one can consist of neurons with the hyperbolic tangent as the activation
-function.
-On the other hand, training a particular architecture involves applying a set of
-ordinated steps to adjust the weights and thresholds of its neurons. Hence, such
-adjustment process, also known as learning algorithm, aims to tune the network so
-that its outputs are close to the desired values
+\section{Unsupervised learning}
+
+In supervised learning, the aim is to learn a mapping from the input to
+an output whose correct values are provided by a supervisor.\\
+In unsupervised
+learning, there is no such supervisor and we only have input data.
+The aim is to find the regularities in the input, there is a structure to the
+input space such that certain patterns occur more often than others, and we want to see what generally happens and what does not. In statistics, this is called density estimation.
+One method for density estimation is clustering where the aim is to
+find clusters or groupings of input.\\ 
+Some popular examples of unsupervised learning algorithms are:
 
 
-\subsection{Main Architectures of Artificial Neural Networks}
-
-In general, an artificial neural network can be divided into three parts, named layers,which are known as:\\
-
-\textbf{(a) Input layer}
-This layer is responsible for receiving information (data), signals, features, or measurements from the external environment. These inputs (samples or patterns) are usually normalized within the limit values produced by activation functions. This normalization results in better numerical precision for the mathematical operations performed by the network.\\
-
-\textbf{(b) Hidden, intermediate, or invisible layers}
-These layers are composed of neurons which are responsible for extracting patterns associated with the process or system being analyzed. These layers perform most of the internal processing from a network.\\
-
-\textbf{(c) Output layer}
-This layer is also composed of neurons, and thus is responsible for producing and presenting the final network outputs, which result from the processing performed by the neurons in the previous layers.
-\\
-\\
-The main architectures of artificial neural networks, considering the neuron disposition, as well as how they are interconnected and how its layers are composed, can be divided as follows:\textbf{(3.6.2)} single-layer feedforward network,\textbf{(3.6.3)} multilayer feedforward networks, \textbf{(3.6.4)} recurrent networks and \textbf{(3.6.5)} mesh networks
-
-\subsection{Single-Layer Feedforward Architecture}
-This artificial neural network has just one input layer and a single neural layer,
-which is also the output layer. \ref{fig:ann1} illustrates a simple-layer feedforward network composed of n inputs and m outputs.
-The information always flows in a single direction (thus, unidirectional), which is from the input layer to the output layer. From \ref{fig:ann1}, it is possible to see that in networks belonging to this architecture, the number of network outputs will always
-coincide with its amount of neurons. These networks are usually employed in pattern classification and linear filtering problems.
-Among the main network types belonging to feedforward architecture are the Perceptron and the ADALINE, whose learning algorithms used in their training processes are based respectively on Hebb’s rule and Delta rule, as it will be discussed
-in the next chapters.
+\begin{itemize}
+  \item k-means for clustering problems.
+  \item Apriori algorithm for association rule learning problems.
+\end{itemize}
 
 
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{img/ann1.PNG}
-\caption{  Example of a single-layer feedforward network }
-\label{fig:ann1}
-\end{figure}
-
-\subsection{Multiple-Layer Feedforward Architectures}
-Differently from networks belonging to the previous architecture, feedforward
-networks with multiple layers are composed of one or more hidden neural layers
-(\ref{fig:ann2}). They are employed in the solution of diverse problems, like those related
-to function approximation, pattern classification, system identification, process
-control, optimization, robotics, and so on.
-\ref{fig:ann2} shows a feedforward network with multiple layers composed of one
-input layer with n sample signals, two hidden neural layers consisting of n1 and n2
-neurons respectively, and, finally, one output neural layer composed of m neurons
-representing the respective output values of the problem being analyzed.
-Among the main networks using multiple-layer feedforward architectures are the
-Multilayer Perceptron (MLP) and the Radial Basis Function (RBF), whose learning
-algorithms used in their training processes are respectively based on the generalized
-delta rule and the competitive/delta rule. These concepts will be addressed in the
-next chapters.
-From \ref{fig:ann2}, it is possible to understand that the amount of neurons composing
-the first hidden layer is usually different from the number of signals composing the
-input layer of the network. In fact, the number of hidden layers and their respective
-amount of neurons depend on the nature and complexity of the problem being
-mapped by the network, as well as the quantity and quality of the available data
-about the problem. Nonetheless, likewise for simple-layer feedforward networks,
-the amount of output signals will always coincide with the number of neurons from
-that respective layer.
-
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.7\textwidth]{img/ann2.PNG}
-\caption{  Example of a feedforward network with multiple layers }
-\label{fig:ann2}
-\end{figure}
-
-
-\subsection{Recurrent or Feedback Architecture}
-In these networks, the outputs of the neurons are used as feedback inputs for other
-neurons. The feedback feature qualifies these networks for dynamic information
-processing, meaning that they can be employed on time-variant systems, such as
-time series prediction, system identification and optimization, process control, and
-so forth.
-Among the main feedback networks are the Hopfield and the Perceptron with
-feedback between neurons from distinct layers, whose learning algorithms used in
-their training processes are respectively based on energy function minimization and
-generalized delta rule, as will be investigated in the next chapters.
-\ref{fig:ann3} illustrates an example of a Perceptron network with feedback, where
-one of its output signals is fed back to the middle layer.
-Thus, using the feedback process, the networks with this architecture produce
-current outputs also taking into consideration the previous output values.
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.65\textwidth]{ann3.PNG}
-\caption{ Example of a recurrent network }
-\label{fig:ann3}
-\end{figure}
-
-\subsection{Mesh Architectures}
-The main features of networks with mesh structures reside in considering the spatial
-arrangement of neurons for pattern extraction purposes, that is, the spatial localization
-of the neurons is directly related to the process of adjusting their synaptic
-weights and thresholds. These networks serve a wide range of applications and are
-used in problems involving data clustering, pattern recognition, system optimization,
-graphs, and so forth.
-The Kohonen network is the main representative of mesh architectures, and its
-training is performed through a competitive process, as will be described in the
-following chapters. \ref{fig:ann4} illustrates an example of the Kohonen network
-where its neurons are arranged within a two-dimensional space.
-\begin{figure}[H]
-\centering
-\includegraphics[width=0.5\textwidth]{img/ann4.PNG}
-\caption{ Structure of a mesh network }
-\label{fig:ann4}
-\end{figure}
-
-
-\subsection{Training Processes and Properties of Learning}
-One of the most relevant features of artificial neural networks is their capability of
-learning from the presentation of samples (patterns), which expresses the system
-behavior. Hence, after the network has learned the relationship between inputs and
-outputs, it can generalize solutions, meaning that the network can produce an output
-which is close to the expected (or desired) output of any given input values.
-Therefore, the training process of a neural network consists of applying the
-required ordinated steps for tuning the synaptic weights and thresholds of its
-neurons, in order to generalize the solutions produced by its outputs.
-The set of ordinated steps used for training the network is called learning
-algorithm. During its execution, the network will thus be able to extract discriminant
-features about the system being mapped from samples acquired from the
-system.
-Usually, the complete set containing all available samples of the system behavior
-is divided into two subsets, which are called training subset and test subset. The
-training subset, composed of 60–90\% of random samples from the complete set,
-will be used essentially in the learning process. On the other hand, the test subset,
-which is composed of 10–40 \% from the complete sample set, will be used to verify
-if the network capabilities of generalizing solutions are within acceptable levels,
-thus allowing the validation of a given topology. Nonetheless, when dimensioning these subsets, statistical features of the data must also be considered.
-During the training process of artificial neural networks, each complete presentation
-of all the samples belonging to the training set, in order to adjust the
-synaptic weights and thresholds, will be called training epoch.
-\newline
 \section{ K-Means Clustering }
 K-means \cite{kmeans} is one of the simplest unsupervised learning algorithms that solve the well known clustering problem. \\ K-Means clustering intends to partition n objects into k clusters in which each object belongs to the cluster with the nearest mean. This method produces exactly k different clusters of greatest possible distinction. The best number of clusters k leading to the greatest separation (distance) is not known as a priori and must be computed from the data. The objective of K-Means clustering is to minimize total intra-cluster variance, or, the squared error function:
 \begin{figure}[H]
@@ -517,11 +373,8 @@ The most common approach is to perform multiple clusterings with different start
     \item Choose another centroid $c_i$ with the probability $\frac{D(x)^2}{\sum_{x \in X} D(x)^2}$ where $D(x)$ denotes the shortest distance from the data point $x$ to its closest, already chosen centroid.
     \item Repeat 2. until all $k$ initial centroids are chosen.
 \end{enumerate}
-
 Afterwards, the standard k-means algorithm as described above is performed. The authors also showed that with this initialization algorithm, k-means++ approximately can be computed in $O(\log n)$, compared to $O(n^{dk+1} \log n)$ for the standard algorithm.
 
-
-\newpage
 \section{Model Selection } \label{ms}
 Model selection is the process of choosing between different machine learning approaches - e.g. SVM, logistic regression, etc - or choosing between different hyperparameters or sets of features for the same machine learning approach - e.g. deciding between the polynomial degrees/complexities for linear regression.\\
 The choice of the actual machine learning algorithm (e.g. SVM or logistic regression) is less important than we'd think - there may be a "best" algorithm for a particular problem, but often its performance is not much better than other well-performing approaches for that problem.
@@ -681,5 +534,5 @@ Where 1T/0T indicates the actual class and 1P/0P indicates the predicted class.\
 in this chapter we have discussed in detail some of the most Popular classification algorithms in machine learning in general and  in Pattern recognition specifically such As SVM , NN and Finally ANN, Next we studied deffirent Methods for selecting $^{[\ref{ms}]}$ a Model Using K cross validation and bootstraping , and their astonishing role in maximization the performance of a classifier . \\
 Finally we walked through some of Evaluation metrics that help us evaluate a model such as Sensitivity , Specificity  Positive Predictive value , Negative Predictive value , Accuracy [\ref{eva} ]. \\
 \newline
-\newline
-IN the next chapter we will review some of the most powerful Descriptors for object recognition .
+
+

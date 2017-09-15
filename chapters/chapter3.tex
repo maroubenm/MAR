@@ -94,12 +94,12 @@ transforms, and noise. Lowe demonstrates that by using several SIFT descriptors 
 
 \begin{enumerate}
 \item Scale-Space Extrema Detection :
-The ﬁrst stage of computation must search over all
-scales and image locations, but it can be implemented efﬁciently by using a difference of-Gaussian
+The first stage of computation must search over all
+scales and image locations, but it can be implemented efficiently by using a difference of-Gaussian
 function to identify potential interest points that are invariant to scale and
 orientation.
 \item Keypoint localization :
-At each candidate location, a detailed model is ﬁt to determine
+At each candidate location, a detailed model is fit to determine
 location, scale, and contrast. Keypoints are selected based on measures of their
 stability.
 \item Orientation assignment :
@@ -119,7 +119,7 @@ densely cover the image over the full range of scales and locations.\\ A typical
 on both image content and choices for various parameters).\\ The quantity of features is
 particularly important for object recognition, where the ability to detect small objects in
 cluttered backgrounds requires that at least 3 to 6 features be correctly matched from each
-object for reliable identiﬁcation.
+object for reliable identification.
 For image matching and recognition, features are first extracted from a set of reference
 images and stored in a database.\\ A new image is matched by individually comparing
 each feature from the new image to this previous database and finding candidate matching
@@ -220,10 +220,10 @@ with circles).}
 This shows that when the difference-of-Gaussian function has scales differing by a constant
 factor it already incorporates the  $\sigma ^2 $
 scale normalization required for the Laplacian. \\The
-factor (k-1) in the equation is a constant over all scales and therefore does not inﬂuence
+factor (k-1) in the equation is a constant over all scales and therefore does not influence
 peak location. The approximation error will go to zero as k goes 1, but in practice we have
 found that the approximation has almost no impact on the stability of peak detection or
-localization for even signiﬁcant differences in scale, such as $k= \sqrt{2}$
+localization for even significant differences in scale, such as $k= \sqrt{2}$
 An efficient approach to construction of D(x; y;$\sigma$) is shown in Figure \ref{fig:sift1}. The input image
 is incrementally convolved with Gaussians to produce images separated by a constant
 factor k in scale space, shown stacked in the left column. \\We choose to divide each octave
@@ -252,17 +252,17 @@ for scale space analysis.\\
 To achieve rotation invariance and a high level of efficiency,
 we have chosen to select key locations at maxima
 and minima of a difference of Gaussian function applied in
-scale space. This can be computed very efﬁciently by building
+scale space. This can be computed very efficiently by building
 an image pyramid with resampling between each level.
 Furthermore, it locates key points at regions and scales of
 high variation, making these locations particularly stable for
 characterizing the image.\\ Crowley and Parker \cite{f} and Lindeberg
 \cite{e} have previously used the difference-of-Gaussian in
 scale space for other purposes. In the following, we describe
-a particularly efﬁcient and stable method to detect and characterize
+a particularly efficient and stable method to detect and characterize
 the maxima and minima of this function.\\
 As the 2D Gaussian function is separable, its convolution
-with the input image can be efﬁciently computed by applying
+with the input image can be efficiently computed by applying
 two passes of the 1D Gaussian function in the horizontal
 and vertical directions:
 
@@ -272,7 +272,7 @@ and vertical directions:
 
 
 For key localization, all smoothing operations are done using
-$\sigma = \sqrt{2}$ , which can be approximated with sufﬁcient accuracy
+$\sigma = \sqrt{2}$ , which can be approximated with sufficient accuracy
 using a 1D kernel with 7 sample points.\\
 The input image is first convolved with the Gaussian
 function using $\sigma = \sqrt{2}$ to give an image \textit{A}. This is then
@@ -287,8 +287,8 @@ more natural to resample with a relative scale of$\sqrt{2}$,the
 only constraint is that sampling be frequent enough to detect
 peaks.\\ The 1.5 spacing means that each newsample will
 be a constant linear combination of 4 adjacent pixels. This
-is efﬁcient to compute and minimizes aliasing artifacts that
-would arise from changing the resampling coefﬁcients.\\
+is efficient to compute and minimizes aliasing artifacts that
+would arise from changing the resampling coefficients.\\
 Maxima and minima of this scale-space function are determined
 by comparing each pixel in the pyramid to its
 neighbours. First, a pixel is compared to its 8 neighbours at
@@ -347,8 +347,8 @@ The highest local peak in the histogram is detected, and then any other local pe
 within 80\% of the highest peak is used to also create a keypoint with that orientation.
 Therefore, for locations with multiple peaks of similar magnitude, there will be multiple
 keypoints created at the same location and scale but different orientations. Only about
-15\% of points are assigned multiple orientations, but these contribute signiﬁcantly to the
-stability of matching. Finally, a parabola is ﬁt to the 3 histogram values around each peak
+15\% of points are assigned multiple orientations, but these contribute significantly to the
+stability of matching. Finally, a parabola is fit to the 3 histogram values around each peak
 to interpolate the peak position for better accuracy.
 
 
@@ -360,19 +360,19 @@ To assign an orientation we use a histogram and a small region around it. Using 
 
 Figure \ref{fig:sift4} illustrates the computation of the keypoint descriptor. First the image gradient
 magnitudes and orientations are sampled around a keypoint, using the scale of the keypoint
-to select the level of Gaussian blur for the image. For efﬁciency, the gradients are precomputed
+to select the level of Gaussian blur for the image. For efficiency, the gradients are precomputed
 for all levels of the pyramid as described in Section 4.1.3 . These are illustrated with
 small arrows at each sample location on the left side of Figure \ref{fig:sift4}
 
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{img/sift4.jpg}
-\caption{ A keypoint descriptor is created by ﬁrst computing the gradient magnitude and orientation
+\caption{ A keypoint descriptor is created by first computing the gradient magnitude and orientation
 at each image sample point, as shown on the left. These are weighted by a Gaussian window,
 indicated by the overlayed circle. These samples are then accumulated into orientation histograms
 summarizing the contents over larger regions, as shown on the right, with the length of each arrow
 corresponding to the sum of the gradient magnitudes near that direction within the region. To reduce
-clutter, this ﬁgure shows a 2$\times$2 descriptor array computed from an 8$\times$8 set of samples, whereas most
+clutter, this figure shows a 2$\times$2 descriptor array computed from an 8$\times$8 set of samples, whereas most
 experiments in this paper use 4x4 descriptors computed from a 16$\times$16 sample array..}
 \label{fig:sift4}
 \end{figure}
@@ -383,9 +383,9 @@ with a circular window on the left side of Figure \ref{fig:sift4}, although, of 
 descriptor with small changes in the position of the window, and to give less emphasis
 to gradients that are far from the center of the descriptor, as these are most affected by
 misregistration errors.
-The keypoint descriptor is shown on the right side of Figure \ref{fig:sift4}. It allows for signiﬁcant
+The keypoint descriptor is shown on the right side of Figure \ref{fig:sift4}. It allows for significant
 shift in gradient positions by creating orientation histograms over 4$\times$4 sample regions. The
-ﬁgure shows eight directions for each orientation histogram, with the length of each arrow
+figure shows eight directions for each orientation histogram, with the length of each arrow
 corresponding to the magnitude of that histogram entry. A gradient sample on the left can
 shift up to 4 sample positions while still contributing to the same histogram on the right,
 thereby achieving the objective of allowing for wider local positional shifts.
@@ -396,7 +396,7 @@ entry according to the distance of the sample from its central value, and the gr
 of a sample is distributed into the histogram accumulators according to these weights.
 The descriptor is formed from a vector containing the values of all the orientation histogram
 entries, corresponding to the lengths of the arrows on the right side of Figure \ref{fig:sift4}. The
-ﬁgure shows a 2$\times$2 array of orientation histograms, whereas our experiments below show
+figure shows a 2$\times$2 array of orientation histograms, whereas our experiments below show
 that best results are achieved with a 4$\times$4 array of histograms with 8 orientation bins in each.
 Therefore, the experiments in this paper use a 4$\times$4$\times$8 = 128 element feature vector for each
 keypoint.
@@ -409,7 +409,7 @@ from pixel differences. However, non-linear illumination changes can also occur 
 to camera saturation or illumination changes that affect surfaces with different orientations
 by differing amounts. These effects can cause a large change in relative magnitudes for
 some gradients, but are less likely to affect the gradient orientations. Therefore, we reduce
-the inﬂuence of gradient magnitudes by thresholding the values in the unit feature vector to
+the influence of gradient magnitudes by thresholding the values in the unit feature vector to
 each be no larger than 0.2, and then renormalizing to unit length. This means that matching
 the magnitudes for large gradients is no longer as important, and that the distribution of
 orientations has greater emphasis. The value of 0.2 was determined experimentally using
@@ -438,7 +438,7 @@ H(f(x,y)) =
 \end{bmatrix}
 \end{gather}
 
-For adapt to any scale, we filtered the image by a Gaussian kernel, so given a point X = (x, y), the Hessian matrix H(x,$\sigma$) in x at scale σ is defined as:
+For adapt to any scale, we filtered the image by a Gaussian kernel, so given a point X = (x, y), the Hessian matrix H(x,$\sigma$) in x at scale $\sigma$ is defined as:
 \begin{gather}
  \mathcal{H}(x,\sigma) =
 \begin{bmatrix}
@@ -501,7 +501,7 @@ Now it’s time to extract the descriptor. First we construct a square region ce
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.6\textwidth]{img/surf5.png}
+\includegraphics[width=0.5\textwidth]{img/surf5.png}
 \caption{computation of dx and dy of Haar  }
 \label{fig:surf5}
 \end{figure}
@@ -516,12 +516,7 @@ The two different steps used by SURF to determine the local descriptor vectors a
 
 This makes Surf as our best candidate for gesture recognition  since it offers high number of stable features against Scale invariance and rotation invariance , of course lesser than Sift but it does not worth the Computational operations of up scaling pyramid used in sift Nor the \textbf{valuable }time consumed .
 
-   later on we will Experimentally demonstrate that Surf achieved  better accuracy than sift in Hand gesture . However Even if Surf is less expensive than sift but still computationally expensive which is bad for our purposes ,Since what describe a Good HGR is its ability to interpret  and interact with the Signer performer in real time , That's where Fouriere descriptor Appears to give accurate and a Very Fast feature extractor   
-
-////////////// tlaking about WHY SURF number of features scale invariante and rotation ...BOW  clustering ... 
-and leave the talking about machine learning algorithm to the big summary with surf ..
-
-now the only pblm faced with this magnificant method is the real time response since its computationally expensive  hence the need for a fast Feature descriptor which is why are going to need  fouriere descriptor for its fast and accurate response for our HGR model .
+later on we will Experimentally demonstrate that Surf achieved  better accuracy than sift in Hand gesture Recognition  . However Even if Surf is less expensive than sift but still computationally expensive which is bad for our purposes ,Since what describe a Good HGR is its ability to interpret  and interact with the Signer performer in real time , That's where Fouriere descriptor Appears to give accurate and a Very Fast feature extractor which will meet our requirement for a robust and Real time application  .
 
 
 \section{Fourier Shape Descriptor } \label{FDT}
@@ -567,7 +562,7 @@ the phase (or equivalently, the rotation) is ignored. So, this method is rotatio
 invariant while remaining computationally fast\\
 
 
-\textbf{Generating the Fourier Descriptor: }\\
+\textbf{Generating the Fourier Descriptor: }
 \begin{enumerate}
     \item $X_{c} = \frac{1}{N}\sum_{n=0}^{N-1} x(i) , Y_{c} = \frac{1}{N}\sum_{n=0}^{N-1} y(i)  = 1$ , where N is number of hand object pixels 
     \item Take the magnitude of the N point DFT of these points :\\
@@ -579,15 +574,10 @@ invariant while remaining computationally fast\\
 
 
 This is the Fourier Descriptor for a single shape.\\
-\\
-\textbf{Make a Dictionary :}\\
-For a set of images of the same gesture, compute the average Fourier shape descriptor
-and add it to the dictionary with the same label. Repeat for all desired gestures.\\
-\textbf{Classification}\\
-Compute the Fourier descriptor for each new sample. Compare it with each stored
-gesture in the dictionary using a Euclidean distance measure. The label of the minimum
-distance is the desired gesture \\
-\textbf{( Nearest Neighbor  happens to be the most efficient method of classification  ) }
+
+\textbf{Make a Dictionary : } For a set of images of the same gesture, compute the average Fourier shape descriptor and add it to the dictionary with the same label.  Repeat for all desired gestures.
+
+\textbf{Classification  : }Compute the Fourier descriptor for each new sample.  Compare it with each stored gesture in the dictionary using  Euclidean distance measure.  The label of the minimum distance is the desired gesture( Nearest Neighbor happens to be the most efficient method of classification )
 
 \subsection{Covariance Matrix Approach :}
 This approach \cite{21}
@@ -636,14 +626,8 @@ $$d(C,C') = \sqrt{\sum_{k=1}^{10} (\ln \lambda_{k}(C,C'))^{2}}$$ \\
 \texttt{where $\lambda_{k}(C,C')$ are generalized eigenvalues of C and C'\\
 C = convariance Matrix of new sample ,  C' = Reference from dictionary  } \\
 
-The label of the minimum distance gesture is used for classification .\\
-% Please add the following required packages to wer document preamble:
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
-% Please add the following required packages to your document preamble:
-% \usepackage{graphicx}
+The label of the minimum distance gesture is used for classification .
+
 \begin{table}[!h]
 \centering
 \caption{Pros and Con of Covariance approach }
@@ -655,22 +639,30 @@ The label of the minimum distance gesture is used for classification .\\
                                                                                                                                                  &                                                                                                           &  &  &  \\
                                                                                                                                                  &                                                                                                           &  &  & 
 \end{tabular}
-\end{table}\\
+\end{table}
+
 \newpage
  
  \section{ Conclusion : }
  in this chapter we went through Two types of descriptors :\\
-\textbf{the first} are  Local descriptors which contains two types \textbf{Spectra descriptors( SIFT and SURF ...) and Binary descriptors( ORB , FREAK ,BRIEF...)} , the spectra group of descriptors typically involves more intense computations and algorithms, often requiring floating point
-calculations, and may consume considerable memory. In this taxonomy and discussion,
-spectra is simply a quantity that can be measured or computed, such as light intensity,
-color, local area gradients, local area statistical features and moments, surface normals,
-and sorted data such 2D or 3D histograms of any spectral type, such as histograms of
-local gradient direction. Many of the methods discussed in section 4.2 use local gradient
-information.\\
-Local binary descriptors, as discussed in the previous section, are an attempt
-to move away from more costly spectral methods to reduce power and increase
-performance. Local binary descriptors in many cases offer similar accuracy and
-robustness to the more compute-intensive spectra methods. \\
+\textbf{the first} are  Local descriptors SIFT and SURF  descriptors that typically involves more intense computations and algorithms, often requiring floating point
+calculations, and may consume considerable memory.but generally they give a high  accuracy Additionally to their stable performance even against scale variation and Rotation variation too , the following table is summarizing the Differences of these two descriptors :
+
+\begin{table}[!h]
+\centering
+\caption{COMPARISON OF SIFT AND SURF}
+\label{surfvssift}
+\begin{tabular}{l|l|l|ll}
+\cline{2-3}
+\textbf{}                                                                                     & \textbf{SIFT}                                                                                                                                                     & \textbf{SURF}                                                                                                                             &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Keypoint\\ Detection\end{tabular}}}   & \textbf{\begin{tabular}[c]{@{}l@{}}Different scale image\\ convoluted with\\ Gaussian function\end{tabular}}                                                      & \textbf{\begin{tabular}[c]{@{}l@{}}Original Image is\\ convoluted with\\ Different scale box\\ filter\end{tabular}}                       &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\textbf{\begin{tabular}[c]{@{}l@{}}Keypoint\\ Description\end{tabular}}} & \textbf{\begin{tabular}[c]{@{}l@{}}Gradient amplitude of\\ a square area is\\ calculated with\\ maximum gradient\\ strength as the main\\ direction\end{tabular}} & \textbf{\begin{tabular}[c]{@{}l@{}}A Haar Wavelet response\\  is used to\\ calculate \\ each sector in\\ a \\ circular area\end{tabular}} &  &  \\ \cline{1-3}
+\multicolumn{1}{|l|}{\textbf{Dimensions}}                                                     & 128                                                                                                                                                               & 64                                                                                                                                        &  &  \\ \cline{1-3}
+\end{tabular}
+\end{table}
+
+
+
 \textbf{The second } are Basis Space descriptors   , A basis space is composed of a set of functions, the basis functions, which are
 composed together as a set, such as a series like the Fourier series and covariance Matrix  . \\
 Fourier descriptors represent feature data as sine and cosine terms, which can be
@@ -678,3 +670,5 @@ observed in a Fourier Power Spectrum. The Fourier series, Fourier transform, and
 Fourier transform are used for a wide range of signal analysis, including 1D, 2D, and 3D
 problems. No discussion of image processing or computer vision is complete without
 Fourier methods .
+
+With this summary we are done from Feature detection / extraction and we will move on to the next Phase of building  our HGR System , which is  Feature classification using Machine learning algorithms that's going to be the goal of next section .
