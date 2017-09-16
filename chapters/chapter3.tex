@@ -1,5 +1,5 @@
 
-\chapter{Machine Learning}
+\chapter{Machine Learning} \label{ML}
 
 \section{introduction}
 
@@ -88,8 +88,7 @@ When the data are not completely separable, as with the points marked by a X in 
 
 When a problem is not linearly separable in input space, soft-margin SVM cannot find a robust separating
 hyperplane that minimizes the number of misclassified data points and that generalizes well. For that, a kernel can be used to transform the data to a higher-dimensional space, referred to as kernel space, where data will be linearly separable. In the kernel space a linear hyperplane can thus be obtained to separate the different classes involved in the classification task instead of solving a high-order separating hypersurface in the input space. This is an attractive method, because the overhead on going to kernel space is insignificant compared with learning a nonlinear surface. A kernel should be a Hermitian and positive semidefinite matrix and needs to satisfy Mercer’s theorem, which translates into evaluating the kernel or Gram matrix on all pairs of data points as positive and semidefinite, forming
-\newline 
-\newline
+
 $K(\small{x,u})=\sum\limits_{r} \phi(x)\phi(u) $ .
 
 where $\phi(x) $ belongs to the Hilbert space.
@@ -98,8 +97,6 @@ $$\int \int K(x,u) g(x) g(u) du dx \geq 0 \ \ \ \ \forall g(x) , \ where \int g^
 \\
 \newline 
 Some popular kernel functions include
-\newline
-\newline
 
 
 \begin{itemize}
@@ -142,6 +139,7 @@ resources, for big data .
 
 
 \section{Nearest Neighbour Based Classifiers}
+
 One of the simplest decision procedures that can be used for classification is the
 nearest neighbour (NN) rule. It classifies a sample based on the category of its nearest
 neighbour.When large samples are involved,it can be shown that this rule has a
@@ -225,7 +223,7 @@ In pattern recognition, the k-nearest neighbors algorithm (k-NN) is a non-parame
 k-NN is a type of instance based learning, or lazy learning, where the function is only approximated locally and all computation is deferred until classification. The k-NN algorithm is among the simplest of all machine learning algorithms.\\ Both for classification and regression, it can be useful to assign weight to the contributions of the neighbors, so that the nearer neighbors contribute more to the average than the more distant ones. For example, a common weighting scheme consists in giving each neighbor a weight of 1/d, where d is the distance to the neighbor.\\ The neighbors are taken from a set of objects for which the class (for k-NN classification) or the object property value (for k-NN regression) is known. This can be thought of as the training set for the algorithm, though no explicit training step is required.
 
 \subsubsection{Modified k-Nearest Neighbour (MkNN) Algorithm}
-This algorithm is similar to the kNN algorithm, inasmuch as it takes the k nearest
+This algorithm is similar to the kNN algorithm, in as much as it takes the k nearest
 neighbours into consideration. The only difference is that these k nearest neighbours
 are weighted according to their distance from the test point. It is also called
 the distance-weighted k-nearest neighbour algorithm. Each of the neighbours is
@@ -235,7 +233,7 @@ $$ \left\{\begin{matrix}
 \mathlarger{1} \  \   \     \ if \ d_{k}  =  d_{1}
 \end{matrix}\right.   $$
 
-where j = 1, .., k. The value of wj varies from a maximum of 1 for the nearest
+where j = 1, .., k. The value of $w_{j}$ varies from a maximum of 1 for the nearest
 neighbour down to a minimum of zero for the most distant. Having computed the
 weights wj, the MkNN algorithm assigns the test pattern P to that class for which the
 weights of the representatives among the k nearest neighbours sums to the greatest
@@ -291,21 +289,21 @@ The update process reoccurs until all observations remain at the assigned center
 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\linewidth]{img/iteration01}
+\includegraphics[width=0.4\linewidth]{img/iteration01}
 \caption{k-Means: Possible initial centroid positions}
 \label{fig:kmeans:iteration01}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\linewidth]{img/iteration02}
+\includegraphics[width=0.4\linewidth]{img/iteration02}
 \caption{k-Means: First iteration}
 \label{fig:kmeans:iteration02}
 \end{figure}
 
 \begin{figure}
 \centering
-\includegraphics[width=0.6\linewidth]{img/iteration03}
+\includegraphics[width=0.4\linewidth]{img/iteration03}
 \caption{k-Means: Second iteration}
 \label{fig:kmeans:iteration03}
 \end{figure}
@@ -463,7 +461,7 @@ The core values are:
 \item False positives (FP): samples classified as positive which were labeled negative
 \item False negatives (FN): samples classified as negative which were labeled positive\\
 
-\texttt{A few other metrics are computed from these values }:\\
+\textit{A few other metrics are computed from these values }:\\
 
 \item Accuracy: How often is the classifier correct  $\frac{\text{TP} + \text{TN}}{\text{total}}$
 
@@ -476,7 +474,8 @@ The core values are:
 \item Specificity (or "true negative rate"): How often are negative-labeled samples predicted as negative  $\frac{\text{TN}}{\text{num negative-labeled examples}}$
 \item Precision: How many of the predicted positive samples are correctly predicted   $\frac{\text{TP}}{\text{TP} + \text{FP}}$
 
-\item Prevalence: How many labeled-positive samples are there in the data  $\frac{\text{num positive-labeled examples}}{\text{num examples}}$ \\
+\item Prevalence: How many labeled-positive samples are there in the data  $\frac{\text{num positive-labeled examples}}{\text{num examples}}$ 
+
 Some other values:\\
 
 \item Positive predictive value (PPV): precision but takes prevalence into account. With a perfectly balanced dataset (i.e. equal positive and negative examples, that is prevalence is 0.5), the PPV equals the precision.
@@ -506,9 +505,8 @@ Instead, we may want to use \textbf{precision/recall} as our evaluation metric.
 Where 1T/0T indicates the actual class and 1P/0P indicates the predicted class.\\
 \textbf{Precision} is the number of true positives over the total number predicted as positive. That is, what fraction of the examples labeled as positive actually are positive  $\frac{\text{true positives}}{\text{true positives} + \text{false positives}}$ .\\
 \textbf{Recall} is the number of true positives over the number of actual positives. That is, what fraction of the positive examples in the data were identified  $\frac{\text{true positives}}{\text{true positives} + \text{false negatives}}$
-\newline
-\newline
-\newline
+
+
 \section{Conclusion:}
 
 in this chapter we have discussed in detail some of the most Popular classification algorithms in supervised  learning such As SVM ( Support vector machine ) , NN (Nearest neighbor ) and in  unsupervised learning the  k-means algorithm  , which are going to be used in the classification process after we fed them with the local descriptor such as Surf and Feature shape descriptor as of Fouriere coefficients ,  Next we studied different Methods for selecting $^{[\ref{ms}]}$ a Model Using K cross validation and bootstraping , and their astonishing role in maximization the performance of a classifier .

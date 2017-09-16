@@ -1,29 +1,29 @@
 
-\chapter{Descriptors}
+\chapter{Descriptors}\label{descriptors}
 
 \section{introduction}
 
 Over the last decades, image feature detectors and descriptors have become popular tools in the computer vision community and they are being applied widely in a large number of applications. Image representation , image classification and retrieval  , object recognition and matching  3D scene reconstruction , motion tracking   texture classification , robot localization, all rely on the presence of stable and representative features in the image. Thus, detecting and extracting the image features are vital steps for these applications.
 Hence The need for a Descriptor that can detect and extract Features 
-and Since our HGR system needs a Features detector that can be stable in most cases which will  full fill our need to Recognize the Gesture performed by the user .\\
+and Since our HGR system needs a Features detector that can be stable in most cases which will  full fill our need to Recognize the Gesture performed by the user .
+
 
 \textit{Note : The Definition of SIFT  Descriptor might be long and has a lot of Definitions because Sift is considered as the most  powerful and widely used local descriptor in object recognition and image classification Hence the Literature focus on it  , and as a guarantee  to ensure the understanding of  Sift definition and key words  we will summarize all Sift's  Definition  IN THE END OF EVERY SECTION }
 
 \section{Definitions and Principles:}
 
 \subsection{Global and Local Features}
-the following definition was given by M. Hassaballah et al in \ref{}. 
+the following definition was given by krig S in \cite{krig}. 
 In the global feature representation, the image is represented by one multidimensional
-feature vector, describing the information in the whole image.\\
+feature vector, describing the information in the whole image.
 In other words, the global representation method produces a single vector with values that
 measure various aspects of the image such as color, texture or shape. Practically, a
 single vector from each image is extracted and then two images can be compared by
-comparing their feature vectors.\\ For example, when one wants to distinguish images
+comparing their feature vectors. For example, when one wants to distinguish images
 of a sea (blue) and a forest (green), a global descriptor of color would produce quite
 different vectors for each category. In this context, global features can be interpreted
 as a particular property of image involving all pixels.
-This property can be color
-histograms, texture, edges or even a specific descriptor extracted from some filters
+This property can be color histograms, texture, edges or even a specific descriptor extracted from some filters
 applied to the image \cite{h}.\\ On the other hand, the main goal of local feature representation
 is to distinctively represent the image based on some salient regions while
 remaining invariant to viewpoint and illumination changes. Thus, the image is represented
@@ -88,7 +88,7 @@ information content of the image for providing a compact image representation.
 \section{Spectra descriptors :}
 \subsection{SIFT - Scale Invariant Feature Transforms} \label{siftSection}
 
-The Scale Invariant Feature Transform (SIFT) developed by Lowe \ref{} is the most well known method for finding interest points and feature descriptors, providing invariance to scale, rotation, illumination, affine distortion, perspective and similarity
+The Scale Invariant Feature Transform (SIFT) developed by Lowe \cite{lowe} is the most well known method for finding interest points and feature descriptors, providing invariance to scale, rotation, illumination, affine distortion, perspective and similarity
 transforms, and noise. Lowe demonstrates that by using several SIFT descriptors together to describe an object, there is additional invariance to occlusion and clutter. We provide some detail here on SIFT since it is well designed and well known.
 
 
@@ -167,7 +167,7 @@ subtraction.
 \begin{figure}[H]
 \centering
 \includegraphics[width=0.8\textwidth]{img/sift_dog.jpg}
-\caption{ DOG Principale .}
+\caption{ DOG Principal .}
 \label{fig:sift1}
 \end{figure}
 
@@ -206,7 +206,7 @@ and therefore,
 \begin{figure}[H]
 \centering
 \includegraphics[width=1.0\textwidth]{img/sift2.PNG}
-\caption{ Detection of axima and minima of the difference-of-Gaussian .}
+\caption{ Detection of maxima and minima of the difference-of-Gaussian .}
 \label{fig:sift2}
 \end{figure}
 
@@ -224,7 +224,7 @@ of scale space (i.e., doubling of $\sigma$) into an integer number, s, of interv
 Adjacent image scales are subtracted to produce the difference-of-Gaussian images shown
 on the right. Once a complete octave has been processed, we resample the Gaussian image
 that has twice the initial value of $\sigma$ by taking every second pixel in each row and column. \newline
-\newline
+
 The accuracy of sampling relative to $\sigma$ is no different than for the previous octave, while
 computation is greatly reduced.
 
@@ -406,7 +406,7 @@ differing illuminations for the same objects\\
 
 Sift take  a 16x16 window of "in-between" pixels around the keypoint. split that window into sixteen 4x4 windows. From each 4x4 window it generate a histogram of 8 bins. Each bin corresponding to 0-44 degrees, 45-89 degrees. Gradient orientations from the 4x4 are put into these bins. This is done for all 4x4 blocks. Finally, it normalize the 128 values .
 
-\subsection{Speeded Up Robust Features (SURF) :}
+\subsection{Speeded Up Robust Features (SURF) :} \label{surf}
 SURF (Speeded Up Robust Features), is a feature detector, we talked about SIFT before, and SURF is sort of derivative of SIFT. SURF is based on sums of 2D Haar wavelet responses and makes an efficient use of integral images.
 
 we will not go through  the whole literature  of SURF, because its idea is very similar to SIFT, so we will only talk about \textbf{the difference between these two methods}.
@@ -499,7 +499,7 @@ We extract the sum of values of the responses in both x and y orientation, furth
 \section{Differences and Preference :}
 The two main advantages of SURF over SIFT is that SURF uses Laplacian of Gaussian so as to have a distinction
 between background and foreground features, and secondly, SURF uses only 64 dimensional vector compared to 128 dimensional vector for SIFT . This helps in fast feature computation and also the quick matching capability.
-The two different steps used by SURF to determine the local descriptor vectors are A. Keypoint Detection B. Keypoint Descriptor, which were  explained above \ref{} and \ref{}.
+The two different steps used by SURF to determine the local descriptor vectors are A. Keypoint Detection B. Keypoint Descriptor, which were  explained above \ref{surf} and \ref{siftSection}.
 
 This makes Surf as our best candidate for gesture recognition  since it offers high number of stable features against Scale invariance and rotation invariance , of course lesser than Sift but it does not worth the Computational operations of up scaling pyramid used in sift Nor the \textbf{valuable }time consumed .
 
@@ -631,7 +631,8 @@ The label of the minimum distance gesture is used for classification .
 \newpage
  
  \section{ Conclusion : }
- in this chapter we went through Two types of descriptors :\\
+ in this chapter we went through Two types of descriptors :
+ 
 \textbf{the first} are  Local descriptors SIFT and SURF  descriptors that typically involves more intense computations and algorithms, often requiring floating point
 calculations, and may consume considerable memory.but generally they give a high  accuracy Additionally to their stable performance even against scale variation and Rotation variation too , the following table is summarizing the Differences of these two descriptors :
 
@@ -651,7 +652,8 @@ calculations, and may consume considerable memory.but generally they give a high
 
 
 \textbf{The second } are Basis Space descriptors   , A basis space is composed of a set of functions, the basis functions, which are
-composed together as a set, such as a series like the Fourier series and covariance Matrix  . \\
+composed together as a set, such as a series like the Fourier series and covariance Matrix  . 
+
 Fourier descriptors represent feature data as sine and cosine terms, which can be
 observed in a Fourier Power Spectrum. The Fourier series, Fourier transform, and Fast
 Fourier transform are used for a wide range of signal analysis, including 1D, 2D, and 3D

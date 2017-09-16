@@ -139,7 +139,7 @@ with this simple algorithm we can seperate objects from each other and therefor 
 \end{figure}
 
 
-the same process done with the other hand , Making a \textbf{XOR } operation to the two images we end up having two hands isolated like shown in fig \ref{fig:twohd}
+the same process done with the other hand , Making a \textbf{OR } operation to the two images we end up having two hands isolated like shown in fig \ref{fig:twohd}
 
  \begin{figure}[H]
 \centering
@@ -281,23 +281,25 @@ images features. \\(2) Calculation of the test image visual words
 and quantify the test image, and then calculate the saliency
 calculation test image visual word weighted histogram.\\ (3)
 using the trained SVM classiﬁer to obtain a classiﬁcation
-result.\\
+result.
 the following Figure \ref{fig:algo1}  summarize the whole  process :
 
 \begin{figure}[H]
 \centering
-\includegraphics[width=0.75\textwidth]{img/myalgo.jpg}
-\caption{Flowchart for whole BOW process }
+\includegraphics[width=1.0\textwidth]{img/myalgo.pdf}
+\caption{Flowchart for the structure of the algorithm , in block (A) the Extracted Keypoints  are Clustered to i Vocabulary and generate a codewords dictionary  ,then compute a histogram using visual words ( vocabulary ) for all the training samples these histograms are then fed to an SVM for classification, in Block (B) test images are converted to histogram representation by couting how many keypoints appeared in cluster i ,  and then classify the results using the trained SVM }
 \label{fig:algo1}
 \end{figure}
 
-\newline
-for Surf Descriptor we have 200 image for each Gesture  which gave approximetly 400444 Features to clusters 
+\newpage
+
+for Surf Descriptor we have 200 image for each Gesture  which gave approximately 400444 Features to clusters 
+
 \subsection{EXPERIMENTAL RESULTS }
-in this section we are interested in maximizing the performances of SVM and KNN , using K-cross Validation to make model selection , using K = 10 for cross Validation which has ensure us greater performance ,  . \\
+in this section we are interested in maximizing the performances of SVM and KNN , using K-cross Validation to make model selection , using K = 10 for cross Validation which has ensure us a great    ,  . \\
 we have chose Confusion to be our main Evaluation Metric since The method can be used for binary classification or Multi class classifiction like Our Case ( 17 class ) 
 
-\subsubsection{ }
+\subsubsection{ } 
 
 confusion mtrix ...\\
 SVM performance ...
